@@ -1,0 +1,39 @@
+body{
+    background-color: #005082;
+    overflow: scroll;
+}
+
+.col-md-10{
+    margin-top: 4%;
+    text-align: center;
+}
+
+.col-md-5{
+    margin: auto;
+}
+.card{
+    margin-top: 3% !important;
+    text-align: center;
+    margin: auto;
+}
+
+img{
+    position: relative;
+    display:block;
+    cursor: pointer;
+}
+
+#Atras{
+    background-color: #ffa41b;
+    padding: 6px 14px;
+    display: block;
+    position: absolute;
+    color: white;
+    text-decoration: none;
+}
+
+@media only screen and (max-width:600px){
+    #Atras{
+        margin:2% 0% 2% 3%;
+    }
+}

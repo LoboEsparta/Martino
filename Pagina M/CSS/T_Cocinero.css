@@ -1,0 +1,30 @@
+.col-md-12{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    position: absolute;
+    left: 0px;
+    background-color: #005082 ;
+    transition: all .5s ease;
+    box-sizing: border-box;
+    overflow-y: scroll;
+}
+
+.card{
+    margin-top: 5%;
+    text-align: center;
+}
+
+@media only screen and (max-width: 600px){
+    .col-md-6{
+        width: 50%;
+    }
+}
+
+#Top{
+    margin-top: 5%;
+}
+
+#Borde{
+    border: 1px solid black;
+}

@@ -1,0 +1,19 @@
+body{
+    background-color: #005082;
+    overflow: scroll;
+}
+
+.col-md-10{
+    margin-top: 4%;
+    text-align: center;
+}
+
+.col-md-5{
+    margin: auto;
+}
+.card{
+    margin-top: 3% !important;
+    text-align: center;
+    margin: auto;
+    cursor: pointer;
+}

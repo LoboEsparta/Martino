@@ -1,0 +1,60 @@
+.col-md-12{
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    position: absolute;
+    left: 0px;
+    background-color: #005082 ;
+    transition: all .5s ease;
+    box-sizing: border-box;
+    overflow-y: scroll;
+}
+
+.card{
+    margin-top: 5%;
+    text-align: center;
+}
+
+.col-md-4{
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+
+@media only screen and (max-width: 600px){
+    .col-md-4{
+        width: 30%;
+        margin-left: 3%;
+    }
+}
+
+#Mio{
+    padding-right: 9%;
+}
+
+h5{
+    margin-top: 1%;
+    padding: 1%;
+    padding-bottom: 4%;
+    margin-bottom: 0px !important;
+}
+
+@media only screen and ( max-width: 600px){
+    h5{
+        padding-bottom: 30px;
+    }
+}
+
+#Pad{
+    padding: 0%;
+
+}
+
+#Especial{
+    height: 60px;
+}
+
+a{
+    text-decoration: none !important;
+    color: black;
+}

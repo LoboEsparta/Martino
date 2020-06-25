@@ -1,0 +1,46 @@
+body{
+    background-color: #005082;
+    overflow: scroll;
+}
+
+th{
+    color: white !important;
+}
+
+td{
+    color: white !important;
+}
+
+#alinear{
+    text-align: left;
+    margin-top: 4%;
+}
+
+a{
+    background-color: #ffa41b;
+    color: white;
+    padding: 5px 14px;
+    text-decoration: none !important;
+
+}
+
+.col-md-4{
+    text-align: center;
+}
+
+button{
+    width: 90%;
+    margin: auto;
+    margin-top: 3%;
+    padding: 9px 0px;
+    background-color: #343a40;
+    color: white;
+    transition: all .5s ease;
+    outline: none !important;
+}
+
+button:hover{
+    transition: all .5s ease;
+    background-color: #191919;
+    outline: none !important;
+}

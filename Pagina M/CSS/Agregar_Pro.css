@@ -1,0 +1,47 @@
+body{
+    background-color: #005082;
+    overflow: scroll;
+}
+
+.col-md-8{
+    text-align: center;
+}
+
+h3{
+    color: white;
+    margin-top: 3%;
+}
+
+h4{
+    margin-top: 3%;
+    color: white;
+}
+
+button{
+    display:block;
+    margin: auto;
+    margin-top: 3%;
+    width: 20%;
+    outline: none !important;
+    background-color: #ffa41b;
+    color: white;
+
+}
+
+#Atras{
+    position: absolute;
+    display: block;
+    margin-left: 5%;
+    background-color: #ffa41b;
+    text-decoration: none;
+    color: white;
+    padding: 5px 14px;
+}
+
+input{
+    text-align: center;
+    outline: none;
+}
+textarea{
+    outline: none;
+}
