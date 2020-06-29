@@ -4,20 +4,16 @@
     padding: 10px;
     position: absolute;
     left: 0px;
-    background-color: #005082 ;
+    background-color:#f2fbfc;
     transition: all .5s ease;
     box-sizing: border-box;
     overflow-y: scroll;
 }
 
-.col-md-6{
+.col-md-3{
     text-align: center;
     padding: 0%;
-}
-
-a{
-    margin-top: 5%;
-    
+    margin-top: 2%;
 }
 
 #Esta{
@@ -26,14 +22,32 @@ a{
     cursor: pointer;
 }
 
+.card-body{
+    background-color: white;
+}
+
 .card{
     margin-top: 5%;
     text-align: center;
+    margin: auto;
+    position: relative;
+    z-index: 2;
 }
 
-#Borde{
-    border: 1px solid black;
+
+.card::after{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    content: '';
+    background: linear-gradient(to right, #0f0c29, #302b63, #24243e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    width: 94%;
+    height: 94%;
+    filter: blur(10px);
+    z-index: -1;
+    
 }
+
 
 @media only screen and (max-width: 600px){
     .col-md-6{
@@ -48,7 +62,7 @@ button{
     margin-top: 5%;
 }
 
-img{
+.Po{
     cursor: pointer;
 }
 
@@ -58,14 +72,14 @@ img{
 
 #Mio{
     text-align: left;
-    padding-left: 3%;
+    padding-left: 1%;
+    background-color: rgba(255, 164, 27, 1);
 }
 
 /*---------------------------------*/
 
-
-@media only screen and (max-width:600px){
+@media only screen and (max-width: 600px ){
     .col-sm-10{
-        width: 60%;
+        width: 80% !important;
     }
 }

@@ -34,7 +34,7 @@
             <div class="Contenido">
                 <div class="row">
                     <div class="col-md-1">
-                <img src="Img/menu.png" height="40" class="Menu-Bot">
+                <img src="Img/menu - copia.png" height="40" class="Menu-Bot">
                     </div>
                     <div class="col-md-11">
                 <h1 id="Mio">Tablero de Meseros</h1>
@@ -42,66 +42,57 @@
                 </div>
             </div>
 
+            <!-- Card de Meseros-->
 
-              <div class="row">
-                <div class="col-sm-6">
-                    <div class="card">
-                        <div class="card-body">
-                                <h5 class="card-title">Mesa 1</h5>
-                                <div class="row">
-                                    <div class="col-md-3"></div>
-                                    <div class="col-sm-6" id="Borde">
-                                    <p class="card-text"> 2 cocteles chicos de camarón</p>
-                                    <p class="card-text"> 1 coctel grande de pulpo</p>
-                                    <p class="card-text"> 3 crepas de mariscos</p>
-                                    </div>
-                                    <div class="col-md-3"></div>
-                                </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Clave" id="Confirma" > Confirmar </button>
-                                </div>
- 
-                                <div class="col-md-6">
-                                    <button type="" class="" data-toggle="modal" data-target="#exampleModal"><img src="Img/3 point.png" height="20"></button>
-                                </div>
-                                
-                            </div>
-                        </div>
+            <div class="row">
+              <div class="col-md-3">
+              <div class="card" style="width: 14rem;">
+                <div class="card-body">
+                  <h5 class="card-title"><img src="Img/MartinoLogo.png" height="180"></h5>
+                  <div class="row">
+                    <div class="col-md-6">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Clave" id="Confirma" > Confirmar </button>
                     </div>
+
+                    <div class="col-md-6">
+                        <button type="" class="" data-toggle="modal" data-target="#mesa1"><img src="Img/3 point.png" height="20"></button>
+                    </div>
+                    
+                </div>
+                </div>
+              </div>
+              </div>
+
+              <div class="col-md-3">
+                <div class="card" style="width: 14rem;">
+                  <div class="card-body">
+                    <h5 class="card-title"><img src="Img/MartinoLogo.png" height="180"></h5>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ClaveUs" > Confirmar </button>
+                      </div>
+  
+                      <div class="col-md-6">
+                        <button type="" class="" data-toggle="modal" data-target="#mesa2"><img src="Img/3 point.png" height="20"></button>
+                      </div>
+                      
+                  </div>
+                  </div>
+                </div>
                 </div>
 
 
-                <div class="col-sm-6">
-                    <div class="card">
-                        <div class="card-body">
-                                <h5 class="card-title">Mesa 2</h5>
-                                <div class="row">
-                                    <div class="col-md-3"></div>
-                                    <div class="col-sm-6" id="Borde">
-                                    <p class="card-text"> 2 cocteles grandes de camarón</p>
-                                    <p class="card-text"> 1 caldo de camarón </p>
-                                    <p class="card-text"> 4 crepas de mariscos</p>
-                                    </div>
-                                    <div class="col-md-3"></div>
-                                </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ClaveUs" > Confirmar </button>
-                                </div>
- 
-                                <div class="col-md-6">
-                                    <button type="" class="" data-toggle="modal" data-target="#mesa2"><img src="Img/3 point.png" height="20"></button>
-                                </div>
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-        </div>
 
 
 
+
+            </div>
+                
+        
+
+
+
+            <!--Boton de Confirmar-->
 
         <div class="modal fade" id="Clave" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -118,7 +109,7 @@
                           <input type="password" class="form-control" id="Contraseña" placeholder="Clave">
                         </div>
                         <div class="col-sm-2">
-                            <img src="Img/eye - copia.png" height="20" id="No">
+                            <img src="Img/eye - copia.png" height="20" id="No" class="Po">
                         </div>
                       </div>
                 </div>
@@ -147,7 +138,7 @@
                           <input type="password" class="form-control" id="Contra" placeholder="Clave">
                         </div>
                         <div class="col-sm-2">
-                            <img src="Img/eye - copia.png" height="20" id="Nose">
+                            <img src="Img/eye - copia.png" height="20" id="Nose" class="Po">
                         </div>
                       </div>
                     
@@ -176,14 +167,15 @@
 
     
 
+          <!--Menu de los tres puntitos-->
 
         
   
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="mesa1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Mesa 1</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Orden 1</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -204,7 +196,7 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Mesa 2</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Orden 2</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -220,6 +212,11 @@
       </div>
     </div>
   </div>
+
+  
+
+
+
 
 
 
