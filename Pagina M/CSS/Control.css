@@ -4,7 +4,7 @@
     padding: 10px;
     position: absolute;
     left: 0px;
-    background-color: #005082 ;
+    background-color: #f2fbfc;
     transition: all .5s ease;
     box-sizing: border-box;
     overflow-y: scroll;
@@ -13,6 +13,21 @@
 .card{
     margin-top: 5%;
     text-align: center;
+    position: relative;
+    z-index: 2;
+}
+
+.card::after{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    content: '';
+    background: linear-gradient(to left, #000000, #434343);
+    width: 99%;
+    height: 94%;
+    filter: blur(7px);
+    z-index: -1;
+    
 }
 
 .col-md-4{
@@ -21,16 +36,13 @@
 }
 
 
-@media only screen and (max-width: 600px){
-    .col-md-4{
-        width: 30%;
-        margin-left: 3%;
-    }
-}
-
 #Mio{
     padding-right: 9%;
+    padding-left: 2%;
 }
+
+
+
 
 h5{
     margin-top: 1%;
@@ -47,6 +59,7 @@ h5{
 
 #Pad{
     padding: 0%;
+    background-color: white;
 
 }
 
