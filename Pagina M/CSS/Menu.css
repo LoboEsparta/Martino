@@ -60,3 +60,34 @@ input{
     text-align: center;
     outline: none !important;
 }
+
+
+/*-----Otra Pag------*/
+
+#Left{
+    margin-top: 1%;
+    margin-right: 5%;
+    text-align: right;
+    display: block !important;
+}
+
+#Mio{
+    background-color: #a6b808;
+    margin-top: 1%;
+    padding-left: 2%;
+    color: white;
+}
+
+#Eli{
+    background-color: #e40000 ;
+    color: white;
+    padding: 11px 59px;
+    font-weight: 400;
+    border-radius: 3%;
+    transition: all .5s ease;
+}
+
+#Eli:hover{
+    background-color:red ;
+    transition: all .5s ease;
+}

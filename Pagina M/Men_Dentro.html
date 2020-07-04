@@ -10,85 +10,78 @@
     <link rel="Icon" href="Img/martino.ico">
     </head>
     <body>
-        <div class="row">
-        <div class="col-md-12">
-            <div class="Contenido">
-                <div class="row">
-                    <div class="col-md-12" id="Agregar">
-                        <div class="btn-group" role="group" id="Margen">
-                            <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Agregar
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                              <a class="dropdown-item" href="#" data-toggle="modal" data-target="#agregar">Categoria<img src="Img/anadir.png" height="24"></a>
-                            </div>
-                          </div>
+        <div class="Contenido">
+            <div class="row">
+                <div class="col-md-1"></div>
+                <div class="col-md-11">
+                    <h1 id="Mio">Ensaladas</h1>
+                    <div class="btn-group" role="group" id="Left">
+                        <button id="btnGroupDrop1" type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          Agregar
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
+                            <a class="dropdown-item" href="A_Producto.html">Producto<img src="Img/anadir.png" height="24"></a>
 
-
-                    
-
-                    
-                    </div>
+                        </div>
+                      </div>
                 </div>
             </div>
         </div>
-        </div>
+
+
 <div class="row">
 <div class="col-md-12" id="Centro">
-        <div class="card" style="width: 18rem;">
-          <a href="Men_Dentro.html">
+    <div class="card" style="width: 18rem;">
         <div class="card-body">
-          <h5 class="card-title">Ensaladas</h5>
-          <h6>Categoria</h6>
-          <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#cambiar" id="Tamaño">Cambiar nombre</a>
+          <h5 class="card-title">Ensalada Verde</h5>
+          <h6 class="card-title">Precio:$35</h6>
+          <br>
+          <h6 class="card-title">Ingredientes</h6>
+          <p>
+              <li>Lechuga</li>
+              <li>Vinagreta</li>
+              <li>Fresas</li>
+              <li>Manzana</li>
+              <li>Almendra</li>
+              <li>Nuez</li>
+          </p>
+          <a href="A_Pro-Editar.html" class="btn btn-primary" id="Tamaño">Editar</a>
+          <a href="#" class="btn btn-primary"  data-toggle="modal" data-target="#eliminar" id="Tamaño">Eliminar</a>
         </div>
       </div>
-  </a>
 
       
 
       
-      
 
 
 
 
+      <!--Modal Eliminar-->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <!--Modal Categoria-->
-
-      <div class="modal fade" id="agregar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal fade" id="eliminar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Nombre de su Nueva Categoria</h5>
+              <h5 class="modal-title" id="exampleModalLabel">¿Seguro que desea Eliminar?</h5>
               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
             </div>
             <div class="modal-body">
-                <input type="text" placeholder="Nombre de su Categoria">
+                <button type="button" id="Eli">Eliminar</button>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-              <button type="submit" class="btn btn-primary">Añadir Categoria</button>
             </div>
           </div>
         </div>
       </div>
+      
+
+
+
+
 
 
       <!--Modal Cambiar Nombre-->
@@ -130,7 +123,7 @@
 </div>
 
 
-<a href="Control.html" id="Bot">Atras </a>
+<a href="Menu.html" id="Bot">Atras </a>
 
 
 
