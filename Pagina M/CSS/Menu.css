@@ -4,7 +4,7 @@
 }
 
 body{
-    background-color: #005082;
+    background-color: #cbf8f8;
 }
 
 .card{
@@ -19,19 +19,11 @@ body{
     text-align: right;
 }
 
-#Boton{
-    margin-right: 2%;
-}
-
-#Tamaño{
-    width: ;
-}
-
 #Bot{
-    margin-left: 5%;
+    margin-left: 2%;
     display: block;
     position: absolute;
-    margin-top: 30%;
+    margin-top: 25%;
     background-color: #a6b808;
     padding-top: 6px;
     padding-bottom: 6px;
@@ -44,4 +36,27 @@ body{
 
 h6{
     color: #305166;
+}
+
+/*   Submenu*/
+
+#Margen{
+    margin-right: 5%;
+    margin-top: 1%;
+}
+
+img{
+    margin-left: 9%;
+}
+
+/*----- Contenido-----*/
+
+#Centro{
+    text-align: center;
+}
+
+input{
+    width:70%;
+    text-align: center;
+    outline: none !important;
 }
