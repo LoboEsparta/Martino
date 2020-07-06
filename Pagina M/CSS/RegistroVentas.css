@@ -1,11 +1,6 @@
 body{
-    background-color: #ffffff;
+    background-color: #005082;
     overflow: scroll;
-}
-
-#Mio{
-    padding-left:2%;
-    padding-bottom: 1%;
 }
 
 th{
@@ -13,11 +8,7 @@ th{
 }
 
 td{
-    color: black !important;
-}
-
-#Black{
-    color: black !important;
+    color: white !important;
 }
 
 #alinear{
@@ -30,11 +21,7 @@ a{
     color: white;
     padding: 5px 14px;
     text-decoration: none !important;
-    margin-left: 1%;
-}
 
-a:hover{
-    color: white;
 }
 
 .col-md-4{
