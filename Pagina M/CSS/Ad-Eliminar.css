@@ -4,68 +4,142 @@
     padding: 10px;
     position: absolute;
     left: 0px;
-    background-color: #005082 ;
+    background-color: #e7f5fd ;
     transition: all .5s ease;
     box-sizing: border-box;
     overflow-y: scroll;
 }
 
-.col-md-10{
-    text-align: center;
-}
-
-.col-md-6{
-    text-align: center;
-    margin-top: 5%;
-}
-
-h3{
-    color: white;
-}
-
-.col-md-11{
-    text-align: left;
-}
-
 #Mio{
-    padding-right: 9%;
+    padding-left: 2%;
+    padding-bottom: 6px;
+    z-index: 2;
+    width: 100%;
 }
 
-#margen{
-    margin-top: 3%;
+.card{
+    margin: auto;
+    margin-top: 5%;
+    z-index: 2;
+}
+
+.card::after{
+    position: absolute;
+    bottom: -5px;
+    right: -2px;
+    left: -2px;
+    content: '';
+    background: linear-gradient(to top, #000000, #434343);
+    width: 101%;
+    height: 102%;
+    filter: blur(6px);
+    z-index: -1;
     
 }
 
-button{
-    outline: none !important;
-    display: block;
-    position: relative;
-    margin: auto;
-    margin-top: 3%;
-    width: 20%;
-    background-color: #990f02;
+.card-body{
+    background-color: #212026;
+}
+
+.card-title{
     color: white;
+    margin-bottom: 6%;
 }
 
-#Estos{
-    margin-top: 1%;
-    margin-bottom: 1%;
-}
-
-#Atras{
-    margin: 0em;
-    width: 10%;
-    background-color: #ffa41b;
+.card button{
+    margin-top: 15%;
+    width: 100%;
 }
 
 input{
-    width: 50%;
-    text-align: center;
+    display: block;
+    width: 100%;
+    margin-bottom: 3%;
+    border: 1px solid #3728aa;
+    background-color: #212026;
+    color: white;
+    padding: 5px 0px 5px 4px;
     outline: none;
 }
 
-#None{
-    text-decoration: none;
-    color: white;
+input:hover{
+    border: 1px solid #271c79 ;
 }
 
+::-webkit-input-placeholder{
+    color: #d7cfe7;
+} 
+::-moz-placeholder{
+    color: #d7cfe7;
+}  
+:-ms-input-placeholder{
+    color: #d7cfe7;
+}  
+:-moz-placeholder{
+    color: #d7cfe7;
+}  
+
+
+#Con{
+    border: none;
+    outline: none;
+    padding: 7px 25px;
+    background: #ffa41b;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+    transition: all .5s ease;
+}
+
+#Con:hover{
+    cursor: pointer;
+    background: #ffc107;
+    color:white;
+    text-decoration: none;
+    transition: all .5s ease;
+}
+
+/*-------------------*/
+
+#Ancho{
+    display: block;
+}
+
+img{
+    cursor: pointer;
+    display: inline;
+}
+
+@media only screen and (max-width: 800px ){
+    .col-md-10{
+        width: 80% !important;
+    }
+}
+
+.col-sm-2{
+    width: 20%;
+    padding: 0%;
+    display: block;
+}
+
+#down{
+    margin-bottom: 4%;
+}
+
+#Editar{
+    text-align: center;
+    background-color: rgba(39, 28, 121, .9);
+    border: 1px solid #271c79;
+    color: white;
+    outline: none;
+    padding: 6px 20px; 
+    text-decoration: none;
+    transition: all .5s ease;
+}
+#Editar:hover{
+    color: orange;
+    transition: all .5s ease;
+}
+form{
+    margin-bottom: 8%;
+}

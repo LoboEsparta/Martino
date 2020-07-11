@@ -1,35 +1,25 @@
-.col-md-12{
-    width: 100%;
-    height: 100%;
-    padding: 10px;
-    position: absolute;
-    left: 0px;
-    background-color: #005082 ;
-    transition: all .5s ease;
-    box-sizing: border-box;
-    overflow-y: scroll;
+#content{
+    min-height: 90vh;
 }
 
 .card{
     margin-top: 5%;
     text-align: center;
+    position: relative;
+    z-index: 2;
 }
 
-.col-md-4{
-    margin-top: 2%;
-    margin-bottom: 2%;
-}
-
-
-@media only screen and (max-width: 600px){
-    .col-md-4{
-        width: 30%;
-        margin-left: 3%;
-    }
-}
-
-#Mio{
-    padding-right: 9%;
+.card::after{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    content: '';
+    background: linear-gradient(to left, #000000, #434343);
+    width: 99%;
+    height: 94%;
+    filter: blur(7px);
+    z-index: -1;
+    
 }
 
 h5{
@@ -47,6 +37,7 @@ h5{
 
 #Pad{
     padding: 0%;
+    background-color: white;
 
 }
 
@@ -58,3 +49,26 @@ a{
     text-decoration: none !important;
     color: black;
 }
+
+/*----------*/
+
+#Left{
+    margin-top: 1%;
+    text-align: right;
+    display: block !important;
+}
+
+#Margen{
+    margin-left: 2%;
+    margin-bottom: 10%;
+}
+
+#User{
+    margin-left: 2%;
+    margin-bottom: 5%;
+}
+
+#Exit{
+    margin-left: 2%;
+}
+
