@@ -1,0 +1,41 @@
+body{
+    background-color: #005082;
+}
+
+.col-md-10{
+    text-align: center;
+}
+
+input{
+    text-align: center;
+    outline: none;
+}
+
+button{
+    color: white;
+    outline: none !important;
+    background-color: #ffa41b; 
+    display: inline-block;
+    margin-top: 5%;
+}
+
+#Atras{
+    display: block;
+    position: absolute;
+    padding: 6px 14px;
+    background-color: #ffa41b;
+    color: white;
+    text-decoration: none;
+    outline: none;
+}
+
+h3{
+    color: white;
+    margin-top: 3%;
+}
+
+@media only screen and (max-width:600px){
+    #Atras{
+        margin-left: 3%;
+    }
+}

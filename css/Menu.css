@@ -1,0 +1,97 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-color: #cbf8f8;
+}
+
+.card{
+    display: inline-block;
+    margin-left: 3% ;
+    margin-top: 3%;
+    text-align: center;
+    cursor: pointer;
+}
+
+#Agregar{
+    text-align: right;
+}
+
+#Bot{
+    margin-left: 2%;
+    display: block;
+    position: absolute;
+    margin-top: 25%;
+    background-color: #a6b808;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    padding-right: 18px;
+    padding-left: 18px;
+    text-decoration: none;
+    color: white;
+    border: .5px solid white;
+}
+
+h6{
+    color: #305166;
+}
+
+/*   Submenu*/
+
+#Margen{
+    margin-right: 5%;
+    margin-top: 1%;
+}
+
+img{
+    margin-left: 9%;
+}
+
+/*----- Contenido-----*/
+
+#Centro{
+    text-align: center;
+}
+
+input{
+    width:70%;
+    text-align: center;
+    outline: none !important;
+}
+
+
+/*-----Otra Pag------*/
+
+#Left{
+    margin-top: 1%;
+    margin-right: 5%;
+    text-align: right;
+    display: block !important;
+}
+
+#Mio{
+    background-color: #a6b808;
+    margin-top: 1%;
+    padding-left: 2%;
+    color: white;
+}
+
+#Eli{
+    background-color: #e40000 ;
+    color: white;
+    padding: 11px 59px;
+    font-weight: 400;
+    border-radius: 3%;
+    transition: all .5s ease;
+}
+
+#Eli:hover{
+    background-color:red ;
+    transition: all .5s ease;
+}
+
+#Tamaño{
+    margin-right: 8%;
+}

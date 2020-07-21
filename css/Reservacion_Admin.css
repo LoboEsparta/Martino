@@ -1,0 +1,110 @@
+body{
+    background-color: #eaf2f7;
+    overflow: scroll;
+}
+
+#Mio{
+    padding-left: 2%;
+    padding-bottom: 1%;
+}
+
+.col-md-10{
+    margin-top: 4%;
+    text-align: center;
+}
+
+.col-md-5{
+    margin: auto;
+}
+
+.card-body{
+    background-color: white;
+}
+.card{
+    margin-top: 3% !important;
+    text-align: center;
+    margin: auto;
+    z-index: 2;
+}
+
+.card::after{
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    content: '';
+    background: linear-gradient(to top, #0f2027, #203a43, #2c5364);
+    width: 97%;
+    height: 94%;
+    filter: blur(10px);
+    z-index: -1;
+    
+}
+
+img{
+    position: relative;
+    display:block;
+    cursor: pointer;
+}
+
+#Atras{
+    background-color: #ffa41b;
+    padding: 6px 14px;
+    display: block;
+    position: absolute;
+    color: white;
+    text-decoration: none;
+}
+
+@media only screen and (max-width:600px){
+    #Atras{
+        margin:2% 0% 2% 3%;
+    }
+}
+
+input{
+    display: block;
+    width: 100%;
+    margin-bottom: 3%;
+    border: 1px solid #3728aa;
+    background-color: #212026;
+    color: white;
+    padding: 5px 0px 5px 4px;
+    outline: none;
+}
+
+input:hover{
+    border: 1px solid #271c79 ;
+}
+
+.modal-title{
+    color: white;
+}
+
+.modal-body{
+    background-color: #212026;
+}
+
+.modal-content{
+    background-color: #212026;
+}
+
+.modal-footer{
+    background-color: #212026;
+}
+
+.btn{
+    background-color: #3728aa;
+    color: white;
+    border: 1px solid #3728aa;
+}
+
+.btn:hover{
+    color: white;
+}
+
+#Eliminar{
+    background-color: #9b0808;
+    color: white;
+    border: 1px solid #9b0808;
+    margin-left: 3%;
+}

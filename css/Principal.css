@@ -1,0 +1,82 @@
+@font-face{
+    font-family: "Todo";
+    src: url(gill-sans-mt.ttf);*/
+    }
+
+    @media only screen and (max-width: 600px) {
+        .col-md-12 {
+          
+        }
+      }
+
+      @media only screen and (max-width: 600px) {
+        .col-md-11 {
+            margin-top: 3%;
+          
+        }
+      }
+
+
+body{
+    margin: 0;
+    overflow: hidden;
+}
+
+.sidebar{
+    position: absolute;
+    width: 342px;
+    left: 0px;
+    height: 100%;
+    background-color: #000839;
+    padding: 0%;
+}
+
+h1{
+    color: white;
+    background-color: #ffa41b;
+    margin: 0;
+}
+
+.sidebar ul{
+    list-style: none;
+    margin: 0%;
+    padding-left:0%;
+}
+
+#Top{
+    margin-top: 5%;
+}
+
+.sidebar a{
+    display: block;
+    text-decoration: none;
+    padding: 10px;
+    color: white;
+    transition: all .5s ease;
+}
+
+.sidebar a:hover{
+    background-color: #005082;
+    transition: all .5s ease;
+}
+
+
+/*------------Contenido*/
+
+
+
+.Contenido{
+    padding-left: 1%;
+    padding-top: 1%;
+    margin-bottom: 1%;
+}
+
+.Menu-Bot{
+    cursor: pointer;
+}
+
+.abrir{
+    transform: translateX(342px);
+}
+
+
