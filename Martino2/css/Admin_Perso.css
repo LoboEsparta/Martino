@@ -1,0 +1,118 @@
+h2{
+    color: white;
+}
+@media only screen and (max-width:800px){
+    h2{
+        color: black;
+    }
+}
+
+
+.col-md-6{
+    text-align: center;
+    margin-bottom: 13%;
+    
+}
+
+#Con{
+    border: none;
+    outline: none;
+    padding: 7px 25px;
+    background: #000839;
+    color: #ffa41b;
+    font-size: 18px;
+    border-radius: 20px;
+    margin-top: 5%;
+    transition: all .5s ease;
+}
+
+#Con:hover{
+    cursor: pointer;
+    background: #000839;
+    color:#ffdd1b;
+    text-decoration: none;
+    transition: all .5s ease;
+}
+
+
+/*-------------------------------------------*/
+
+h6{
+    padding-top: 4px;
+    margin-left: 6px;
+}
+
+.card{
+    margin-top: 2%;
+    position: relative;
+ }
+
+.card h6{
+    text-align: left;
+    margin-top: 1%;
+}
+
+.card h5{
+    text-align: right;
+}
+
+#Naranja{
+    margin-top: 4%;
+    background-color: #000839;
+    
+}
+
+/*------------------------------*/
+
+.card img{
+    cursor: pointer;
+}
+
+.modal{
+    text-align: center;
+}
+
+button{
+    border: 0px;
+    outline: 0px !important;
+    background-color: white;
+}
+
+#Eli{
+    background-color: #e40000 ;
+    color: white;
+    padding: 11px 59px;
+    font-weight: 400;
+    border-radius: 3%;
+    transition: all .5s ease;
+}
+
+#Eli:hover{
+    background-color:red ;
+    transition: all .5s ease;
+}
+
+
+#content{
+    max-height: 82vh !important;
+    
+}
+
+.btn{
+    padding: 7px 19px;
+    background-color: #000839;
+    color: #ffa41b;
+    transition: all .3s ease;
+    border: 1px solid #ffa41b;
+}
+
+.btn:hover{
+    color: #ffdd1b;
+    text-decoration: none;
+    transition: all .3s ease;
+    border: 1px solid #ffdd1b;
+}
+
+#naran{
+    color: #ffa41b;
+}
