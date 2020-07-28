@@ -3,8 +3,8 @@
 include_once 'conexion4.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
-//Realizamos la consulta para tomar el contenido de la tabla ordenes
-$consulta = "SELECT * FROM factura WHERE Ide>0" ;
+//Realizamos la consulta para tomar el contenido de la tabla pago
+$consulta = "SELECT * FROM pago WHERE id>0" ;
 $resultado = $conexion->prepare($consulta);
 $resultado->execute();
 
@@ -43,25 +43,32 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <thead class="thead-dark">
                
                     <tr>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">Clave</th>
-                        <th scope="col">Fecha</th>
+                        <th scope="col">fecha</th>
+                        <th scope="col">subtotal</th>
+                        <th scope="col">IVA</th>
+                        <th scope="col">propina</th>
+                        <th scope="col">Cliente</th>
+                  
+                     
                        
                         <th scope="col">Total</th>
                     </tr>
                 </thead>
                 <?php
+
+                /* Utilizamos un forreach para mostrar todos los registros de la tabla pago" */
                          foreach ($usuarios as $usuario) {
                                 ?>
                 <tbody>
                     <tr>
                   
-                        <th scope="row" id="Black"><?php echo "".$usuario['Nombre_Cliente'];?></th>
-                        <td><?php echo "".$usuario['Ide'];?></td>
-                        <td><?php echo "".$usuario['Fecha'];?></td>
-                       
-                        <td><?php echo "".$usuario['Total'];?></td>
-                        
+                        <!-- Mostramos los registros en forma de tabla -->
+                        <td><?php echo "".$usuario['fecha'];?></td>
+                        <td><?php echo "".$usuario['subtotal'];?></td>
+                        <td><?php echo "".$usuario['IVA'];?></td>
+                        <td><?php echo "".$usuario['propina'];?></td>
+                        <td><?php echo "".$usuario['id_cliente'];?></td>
+                        <th scope="row" id="Black"><?php echo "".$usuario['propina']+$usuario['IVA']+$usuario['subtotal'];?></th>
                     </tr>
                   
                 </tbody>

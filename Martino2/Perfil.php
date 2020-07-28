@@ -1,3 +1,26 @@
+<?php
+$variable1=($_GET['variable1']);
+//Realizamos la conexion a la bd
+include_once 'conexion4.php';
+$objeto = new Conexion();
+$conexion = $objeto->Conectar();
+//Realizamos la consulta para tomar el contenido de la tabla ordenes
+$consulta = "SELECT * FROM gerente WHERE password=$variable1" ;
+$resultado = $conexion->prepare($consulta);
+$resultado->execute();
+
+//Asignamos el valor de la consulta en una variable llamada "usuarios"
+$usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+
+
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -56,15 +79,29 @@
                 <div class="card border-dark mb-3">
                     <div class="card-body">
                         <h5 class="card-title">Tu Información Personal</h5>
-                        <form action="">
-                      <input type="text" placeholder="Nombre Completo">
-                      <input type="text" placeholder="Apellido Paterno">
-                      <input type="text" placeholder="Apellido Materno">
-                      <input type="number" placeholder="Numero Telefonico">
-                      <input type="text" placeholder="Contraseña Visible">
+                        
+                        <?php
+
+//nuevamente utilizamos un forreach, pero esta vez para mostrar el contenido de las ordenes
+           foreach ($usuarios as $usuario) {
+           
+        
+                ?>
+                        <form method="post">
+
+                      <input type="text" placeholder="Nombre Completo" value="Nombre Completo: <?php echo $usuario['nombre'] ?>" disabled>
+                      <input type="text" placeholder="Apellido Paterno" value="Apellido Paterno: <?php echo $usuario['apellidoP'] ?>" disabled>
+                      <input type="text" placeholder="Apellido Materno" value="Apellido Materno: <?php echo $usuario['apellidoM'] ?>" disabled>
+                      <input type="text" placeholder="Numero Telefonico" value="<?php echo "Numero Telefonico: ".$usuario['telefono'] ?>" disabled>
+                      <input type="text" placeholder="Contraseña Visible" value="Contraseña Visible: <?php echo $usuario['password'] ?>" disabled>
+                      
+
+                        <a href="Edit-Perfil.php?variable1=<?php echo $variable1 ?>" id="Editar">Editar</a>
                         </form>
 
-                        <a href="Edit-Perfil.html" id="Editar">Editar</a>
+                        <?php
+           }
+           ?>
                     </div>
                   </div>
 

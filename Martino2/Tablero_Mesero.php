@@ -5,8 +5,8 @@ include_once 'conexion.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 
-//Realizamos una consulta para mostrar todos las ordenes
-$consulta = "SELECT * FROM ordenes WHERE stat='0'" ;
+//Realizamos una consulta para mostrar todos las ordenes de la tabla Pedido
+$consulta = "SELECT * FROM pedido WHERE Estado='Activo'" ;
 
 //Ejecutamos la consulta
 $resultado = $conexion->prepare($consulta);
@@ -74,7 +74,8 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <div class="row">
                     <?php
                     /*Utilizamos un forreach con la variable "usuarios" que asignamos anteriormente y la asignamos a una nueva 
-                     variable llamada "usuario", esto sirve para generar la cantidad de cards para la cantidad de registros obtenidos en la consulta*/
+                     variable llamada "usuario", esto sirve para generar la cantidad de cards para la cantidad de registros 
+                     obtenidos en la consulta*/
                             foreach ($usuarios as $usuario) {
                                 ?>
                                 
@@ -85,13 +86,13 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="row">
                                     <div class="col-md-6">
                                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#Clave<?php echo "".$usuario['NumMesa']?>" id="Confirma">
+                                            data-target="#Clave<?php echo "".$usuario['id']?>" id="Confirma">
                                             Confirmar </button>
                                     </div>
 
                                     <div class="col-md-6">
                                       <button type="" class="" data-toggle="modal"
-                                            data-target="#mesa<?php echo "".$usuario['NumMesa']?>"><img
+                                            data-target="#mesa<?php echo "".$usuario['id']?>"><img
                                                 src="Img/3 point.png" height="20"></button>
                                     </div>
 
@@ -125,14 +126,14 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
                            foreach ($usuarios as $usuario) {
                                 ?>
 
-                <div class="modal fade" id="mesa<?php echo "".$usuario['NumMesa']?>" tabindex="-1" role="dialog"
+                <div class="modal fade" id="mesa<?php echo "".$usuario['id']?>" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
 
                         <div class="modal-content">
 
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Orden<?php echo " ".$usuario['NumMesa']?>
+                                <h5 class="modal-title" id="exampleModalLabel">Orden<?php echo " ".$usuario['id']?>
                                 </h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
@@ -140,19 +141,12 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             </div>
                             <div class="modal-body">
                                 <!--- Mostramos el contenido de las ordenes en forma de lista -->
-                                <li><?php echo $usuario['PlaEntrada'] ?></li>
+                                <li><?php echo $usuario['descripcion'] ?></li>
 
-                                <li><?php echo $usuario['PlaPrincipal'] ?></li>
-
-                                <li><?php echo $usuario['Postre'] ?></li>
-
-                                <li><?php echo $usuario['Bebida'] ?></li>
-
-                                <li><?php echo $usuario['Aditamientos'] ?></li>
+                              
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-
 
                             </div>
 
@@ -172,14 +166,14 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                 //nuevamente utilizamos un forreach, pero esta vez para mostrar el contenido de las ordenes
                            foreach ($usuarios as $usuario) {
-                            $variable1=$usuario['NumMesa'];
+                            $variable1=$usuario['id'];
                         
                                 ?>
 
                   
                     <!--Boton de Confirmar-->
                     <form method="post">
-                    <div class="modal fade" id="Clave<?php echo "".$usuario['NumMesa']?>" tabindex="-1" role="dialog"
+                    <div class="modal fade" id="Clave<?php echo "".$usuario['id']?>" tabindex="-1" role="dialog"
                         aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
@@ -187,7 +181,7 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="modal-header">
 
                                     <h5 class="modal-title" id="exampleModalLabel">Ingrese su clave para aprovar pedido:
-                                        <?php echo " ".$usuario['NumMesa'];?>
+                                        <?php echo " ".$usuario['id'];?>
 
                                        </h5>
                                         
@@ -212,7 +206,7 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 </div>
                                 <div class="modal-footer">
 
-                                   <button type="submit" class="btn btn-secondary" value="" name="botonconfir"><a href="ActualizarOrden.php?variable1=<?php echo $variable1 ?>&variable2=147<?php //echo $variable2?>">Confirmar</a></button>
+                                   <button type="submit" class="btn btn-secondary" value="" name="botonconfir"><a href="ActualizarOrden.php?variable1=<?php echo $variable1 ?>&variable2=4758<?php //echo $variable2?>">Confirmar</a></button>
 
 
 
@@ -230,25 +224,28 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
           
          <?php                  
 $botonconfir="";
+//Asignamos una accion al boton "botonconfir" al ser presionado
 if(isset($_POST['botonconfir'])){
     
+    //Mandamos a llamar la conexion
     require "conexionmeseros.php";
   
   //Asignamos el valor que el mesero asigno en la variable "clave"
     $clave=$_POST['clave'];
-    $stat="1";
 
 
     //Realizamos una consulta para validar si la clave que ingreso el mesero es correcta
-    $q="SELECT COUNT(*) as contar from mesero where Clave='$clave'";
+    $q="SELECT COUNT(*) as contar from mesero where clave='$clave'";
     
+    //Realizamos la consulta
     $consulta=mysqli_query($conexion, $q);
     $array=mysqli_fetch_array($consulta);
     
+    //Si las claves coinciden se muestra un mensaje
     if($array['contar']>0){
     
         echo "<br>";
-        echo '<p class="alert alert-danger agileits" role="alert">Clave incorrecta!';
+        echo '<p class="alert alert-danger agileits" role="alert">Clave correcta';
        
     }else{
    // en caso de que la clave este incorrecta, mostrara un mensaje diciendo que la clave esta incorrecta

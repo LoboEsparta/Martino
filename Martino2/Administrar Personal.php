@@ -3,8 +3,8 @@
 include_once 'conexion4.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
-//Realizamos la consulta para tomar el contenido de la tabla ordenes
-$consulta = "SELECT * FROM auxiliar WHERE Ide>0" ;
+//Realizamos la consulta para tomar el contenido de la tabla auxiliar
+$consulta = "SELECT * FROM auxiliar WHERE id>0" ;
 $resultado = $conexion->prepare($consulta);
 $resultado->execute();
 
@@ -12,7 +12,8 @@ $resultado->execute();
 $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 
-$consulta2 = "SELECT * FROM mesero WHERE Ide>0" ;
+//Realizamos la misma accion para mostrar la tabla de meseros
+$consulta2 = "SELECT * FROM mesero WHERE id>0" ;
 $resultado2 = $conexion->prepare($consulta2);
 $resultado2->execute();
 $usuarios2 = $resultado2->fetchAll(PDO::FETCH_ASSOC);
@@ -82,19 +83,22 @@ $usuarios2 = $resultado2->fetchAll(PDO::FETCH_ASSOC);
 
                     
                             <?php
-                    //Utilizamos un forreach para hacer la cantidad de cards que vamos a ocupar, y de misma forma mostrar el contenido de los pedidos
+                    /* Utilizamos un forreach para hacer la cantidad de cards que vamos a ocupar, 
+                    y de misma forma mostrar el contenido de las tablas */
                             foreach ($usuarios as $usuario) {
                                 ?>
                             <?php
-$variable1=$usuario['Nombre'];
-$variable2=$usuario['Apellido_P'];
-$variable3=$usuario['Apellido_M'];
-$variable4=$usuario['Telefono'];
-$variable5=$usuario['clave'];
-$variable0=$usuario['Ide'];
+
+                            //Asignamos el valor de las variables1,2,3,4,5 y 0, para poder ocuparlas en la siguiente pagina
+                                    $variable1=$usuario['nombre'];
+                                    $variable2=$usuario['apellidoP'];
+                                    $variable3=$usuario['apellidoM'];
+                                    $variable4=$usuario['telefono'];
+                                    $variable5=$usuario['clave'];
+                                    $variable0=$usuario['id'];
 ?>
                             <div class="card border-dark mb-3 ">
-                                <h6> <?php echo "".$usuario['Nombre']." ".$usuario['Apellido_P']." ".$usuario['Apellido_M'];?>
+                                <h6> <?php echo "".$usuario['nombre']." ".$usuario['apellidoP']." ".$usuario['apellidoM'];?>
                                 </h6>
                                 <h5><a href="AD_Ver.php?variable1=<?php echo $variable1 ?>&variable2=<?php echo $variable2 ?>&variable3=<?php echo $variable3 ?>&variable4=<?php echo $variable4 ?>&variable5=<?php echo $variable5 ?>"><img
                                             src="Img/eye - copia.png" height="18" data-toggle="tooltip"
@@ -102,7 +106,7 @@ $variable0=$usuario['Ide'];
                                     <a href="AD_Editar.php?variable1=<?php echo $variable1 ?>&variable2=<?php echo $variable2 ?>&variable3=<?php echo $variable3 ?>&variable4=<?php echo $variable4 ?>&variable5=<?php echo $variable5 ?>&variable0=<?php echo $variable0 ?>"><img
                                             src="Img/edit.png" height="18" data-toggle="tooltip" data-placement="right"
                                             title="Editar"></a>
-                                            <button data-toggle="modal" data-target="#eliminar<?php echo "".$usuario['Nombre'];?>"><img src="Img/trash.png"
+                                            <button data-toggle="modal" data-target="#eliminar<?php echo "".$usuario['nombre'];?>"><img src="Img/trash.png"
                                             height="18" data-toggle="tooltip" data-placement="right"
                                             title="Eliminar"></button>
                                 </h5>
@@ -110,12 +114,12 @@ $variable0=$usuario['Ide'];
                             </div>
                                <!--Modal Eliminar-->
 
-        <div class="modal fade" id="eliminar<?php echo "".$usuario['Nombre'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="eliminar<?php echo "".$usuario['nombre'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">¿Seguro que desea Eliminar a <?php echo "".$usuario['Nombre'];?> ?</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">¿Seguro que desea Eliminar a <?php echo "".$usuario['nombre'];?> ?</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -155,19 +159,22 @@ $variable0=$usuario['Ide'];
 
 
                         <?php
-                    //Utilizamos un forreach para hacer la cantidad de cards que vamos a ocupar, y de misma forma mostrar el contenido de los pedidos
-                            foreach ($usuarios2 as $usuario2) {
+                    /* Utilizamos un forreach para hacer la cantidad de cards que vamos a ocupar, 
+                    y de misma forma mostrar el contenido de las tablas */
+                    foreach ($usuarios2 as $usuario2) {
                                 ?>
                       
                             <?php
-                                $variable6=$usuario2['Nombre'];
-$variable7=$usuario2['Apellido_P'];
-$variable8=$usuario2['Apellido_M'];
-$variable9=$usuario2['Clave'];
-$variable10=$usuario2['Ide'];
-?>
+                            //Asignamos el valor de las variables7,8,9, y 10, para poder ocuparlas en la siguiente pagina
+
+                                      $variable6=$usuario2['nombre'];
+                                        $variable7=$usuario2['apellidoP'];
+                                        $variable8=$usuario2['apellidoM'];
+                                        $variable9=$usuario2['clave'];
+                                        $variable10=$usuario2['id'];
+                                        ?>
                             <div class="card border-dark mb-3">
-                                <h6><?php echo "".$usuario2['Nombre']." ".$usuario2['Apellido_P']." ".$usuario2['Apellido_M'];?>
+                                <h6><?php echo "".$usuario2['nombre']." ".$usuario2['apellidoP']." ".$usuario2['apellidoM'];?>
                                 </h6>
                                 <h5><a
                                         href="MS_Ver.php?variable6=<?php echo $variable6 ?>&variable7=<?php echo $variable7 ?>&variable8=<?php echo $variable8 ?>&variable9=<?php echo $variable9 ?>&variable10=<?php echo $variable10 ?>"><img
@@ -175,7 +182,7 @@ $variable10=$usuario2['Ide'];
                                             data-placement="right" title="Ver"></a>
                                     <a href="MS_Editar.php?variable6=<?php echo $variable6 ?>&variable7=<?php echo $variable7 ?>&variable8=<?php echo $variable8 ?>&variable9=<?php echo $variable9 ?>&variable10=<?php echo $variable10 ?>"><img src="Img/edit.png"
                                             height="18" data-toggle="tooltip" data-placement="right" title="Editar"></a>
-                                            <button data-toggle="modal" data-target="#eliminar<?php echo "".$usuario2['Ide'];?>"><img src="Img/trash.png"
+                                            <button data-toggle="modal" data-target="#eliminar<?php echo "".$usuario2['id'];?>"><img src="Img/trash.png"
                                             height="18" data-toggle="tooltip" data-placement="right"
                                             title="Eliminar"></button>
                                 </h5>
@@ -183,12 +190,12 @@ $variable10=$usuario2['Ide'];
                             </div>
                      <!--Modal Eliminar-->
 
-        <div class="modal fade" id="eliminar<?php echo "".$usuario2['Ide'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        <div class="modal fade" id="eliminar<?php echo "".$usuario2['id'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">¿Seguro que desea Eliminar a <?php echo "".$usuario2['Nombre'];?> ?</h5>
+                        <h5 class="modal-title" id="exampleModalLabel">¿Seguro que desea Eliminar a <?php echo "".$usuario2['nombre'];?> ?</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -247,12 +254,7 @@ $variable10=$usuario2['Ide'];
     </script>
     <script src="JS/bootstrap.min.js"></script>
     <script src="JS/abrir.js"></script>
-    <script>
-    /*
-    $(function() {
-        $('[data-toggle="tooltip"]').tooltip();
-    })*/
-    </script>
+   
 </body>
 
 </html>

@@ -3,8 +3,8 @@
 include_once 'conexion.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
-//Realizamos la consulta para tomar el contenido de la tabla ordenes
-$consulta = "SELECT * FROM ordenes WHERE stat='1'" ;
+//Realizamos la consulta para tomar el contenido de la tabla pedido
+$consulta = "SELECT * FROM pedido WHERE Estado='Inactivo'" ;
 $resultado = $conexion->prepare($consulta);
 $resultado->execute();
 
@@ -69,40 +69,38 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                 <div class="row">
                     <?php
-                    //Utilizamos un forreach para hacer la cantidad de cards que vamos a ocupar, y de misma forma mostrar el contenido de los pedidos
+                    /* Utilizamos un forreach para hacer la cantidad de cards que vamos a ocupar, 
+                    y de misma forma mostrar el contenido de los pedidos */
                             foreach ($usuarios as $usuario) {
-                                $variable1=$usuario['NumMesa'];
+                                $variable1=$usuario['id'];
                                 ?>
                     <div class="col-md-6">
-                        <div class="card border-primary mb-3" id="mesa<?php echo "".$usuario['NumMesa']?>">
+                        <div class="card border-primary mb-3" id="mesa<?php echo "".$usuario['id']?>">
                             <div class="card-body">
                                 <h5 class="card-title"><img src="Img/MartinoLogo.png" height="80"></h5>
                                 <form method="get">
                                     <p class="card-text">
+                                        <!-- Aqui se muestra el contenido de los pedidos -->
+                                        <h3> MESA <?php echo "".$usuario['id']?></h3>
 
-                                    <!-- Aqui se muestra el contenido de los pedidos -->
-                                        <h3> MESA <?php echo "".$usuario['NumMesa']?></h3>
-
-                                        <li><?php echo "Platillo De Entrada: ".$usuario['PlaEntrada'] ?></li>
-
-                                        <li><?php echo "Platillo Principal: ".$usuario['PlaPrincipal'] ?></li>
-
-                                        <li><?php echo "Postre: ".$usuario['Postre'] ?></li>
-
-                                        <li><?php echo "Bebida: ".$usuario['Bebida'] ?></li>
-
-                                        <li><?php echo "Aditamientos: ".$usuario['Aditamientos'] ?></li>
+                                        <li><?php echo "Orden: ".$usuario['descripcion'] ?></li> 
 
                                     </p>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <a href="#" id="Top" class="btn btn-primary">Confirmar</a>
+                                        <!-- Estas lineas sirven para cambiar el texto dentro del botón -->
+                                            <button type="submit" id="otroid" class="btn btn-primary" onclick='document.getElementById("otroid").innerHTML =texto;' >Confirmar</button>
+                                          
+                                            <script>
+                                            var texto="En preparación";
+                                        </script>
                                         </div>
-
                                         <div class="col-md-6">
-                                            <button type="submit" id="Top" name="boton1" class="btn btn-primary"
-                                                id="Final" value=""><a href="Eliminar_pedido.php?variable1=<?php echo $variable1 ?>">Finalizado</a>
-                                               
+                                        <!-- Aqui pasamos la variable a la pagina Eliminar el pedido-->
+                                            <button type="submit" name="boton1" class="btn btn-primary"
+                                                id="Final" value=""><a
+                                                    href="Eliminar_pedido.php?variable1=<?php echo $variable1 ?>">Finalizado</a>
+
                                         </div>
                                     </div>
                                 </form>
@@ -130,24 +128,7 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
     </div>
 
     <?php
-/*
-    //Asignamos una accion al boton 1 en este caso es para eliminar el registro
-                                     $boton1="";
-                                     if(isset($_POST['boton1'])){
-                                        //Cuando el usuario de click en el boton "Finalizado" el pedido se borrara
-                                        echo "El registro se ha eliminado";
-                                        $codigo=$usuario['NumMesa'];
-                                        //Realizamos la consulta para eliminar en donde el registro que se borrara es el que presiono el usuario
-                                           $consultaBorrar ="DELETE FROM ordenes WHERE NumMesa=$codigo";
-                                       
-                                       
-                                           $resultadoBorrar = $conexion->prepare($consultaBorrar);
-                                           $resultadoBorrar->execute();
-                                           $usuarios = $resultadoBorrar->fetchAll(PDO::FETCH_ASSOC);
-                                       
-                                    
-                                     }
-                                    */ ?>
+         ?>
 
 
 

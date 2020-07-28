@@ -62,41 +62,36 @@
 
         </div>
           </div>
-          <?php
-
-                    
+          <?php   
 $boton1="";
+
+//Asignamos una accion al boton1
 if(isset($_POST['boton1'])){
     
+  //Realizamos una conexion a la base de datos del restaurante
   $host="localhost";
   $usuario="root";
   $clave="";
-  $bd="restaurante1";
-  
+  $bd="restaurante";
   $conexion=mysqli_connect($host,$usuario,$clave,$bd);
-  
-  
   if($conexion){
-  //echo "conectado";
-      //header("location: home.php");
+  
   }else{
   echo "No se pudo conectar";
-  }
-    
-    
-    
-    $clave=$_POST['pass'];
-    
-    $q="SELECT COUNT(*) as contar from gerente where password='$clave'";
-    
+  }  
+    //Asignamos el valor del formulario a una variable
+    $clavesita=$_POST['pass'];
+    //Comparamos si en la tabla gerente hay un campo en el cual la contraseña coincida con el dato ingresado
+    $q="SELECT COUNT(*) as contar from gerente where password='$clavesita'";
+    //Realizamos la consulta
     $consulta=mysqli_query($conexion,$q);
     $array=mysqli_fetch_array($consulta);
     
     if($array['contar']>0){
-      
-    header("location: Control.html");
+      //Si hay una coincidencia entoncces nos redirecciona al Control
+    header("location: Control.php?usuario=$clavesita");
     }else{
-   // echo "Datos incorrectos";
+   // En caso de estar mal la contraseña se muestra un mensaje que dice "Datos incorrectos";
     echo '<p class="alert alert-danger agileits" role="alert">Datos incorrectos!';
 
     }

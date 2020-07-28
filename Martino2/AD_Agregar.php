@@ -1,5 +1,6 @@
 <?php 
 
+//Estas lineas sirven para crear una conexion con la BD para poder agregar un Administrador nuevo
 $server = "localhost";
 $user = "root";
 $pass = "";
@@ -10,7 +11,8 @@ $conex=mysqli_connect($server,$user,$pass,$bd);
   die("Error: ".mysqli_connect_error());
  }
 
-
+ /* En estas lineas asignamos el valor de las variables "Nombre", "Apellido", "Apellidom", "telefono" y "contraseña
+y el valor que tienen estas variables es el valor que el usuario ingresa en el formulario   */
 $nombre=filter_input(INPUT_POST, 'nombre');
 
 $apellido=filter_input(INPUT_POST, 'apellido');
@@ -88,68 +90,74 @@ $contraseña=filter_input(INPUT_POST, 'contraseña');
 
 $boton1="";
 
-
-
-
+// Esta linea sirve para asignarle una accion al boton1 
 if(isset($_POST["boton1"])){
      
+    //Estas lineas sirven para validar que el campo del formulario no esten vacios, si lo estan se mostrara un mensaje 
+   
       if (empty($nombre)) {
-             echo "Debes ingresar el nombre\n";
+           // Alerta para que ingresen el nombre
+        echo '<p class="alert alert-danger agileits" role="alert">Debes ingresar el nombre!';
              $corr1="0";
-            //return false;
+            
             }else{
-             echo $_POST['nombre'];
+             //Si el campo esta ingresado la carriable corr1 obtiene valor 1.
              $corr1="1";
             }
             if (empty($_POST['apellido'])) {
-            echo "Debes ingresar el apellido";
+                // Alerta para que ingresen el apellido Paterno
+                echo '<p class="alert alert-danger agileits" role="alert">Debes ingresar el apellido Paterno!';
             //return false;
             $corr2="0";
             }else{
-             echo $_POST['apellido'];
+         
              $corr2="1";
 
             }
             if (empty($_POST['apellidom'])) {
-                   echo "Debes ingresar el apellido Materno";
-                   //return false;
+                // Alerta para que ingresen el apellido Materno
+                echo '<p class="alert alert-danger agileits" role="alert">Debes ingresar el apellido Materno';
+               
                    $corr3="0";
 
             }else{
-             echo $_POST['apellidom'];
+             
              $corr3="1";
 
             }
             if (empty($_POST['telefono'])) {
-                   echo "Debes ingresar el telefono";
-                   //return false;
+                // Alerta para que ingresen el telefono
+                echo '<p class="alert alert-danger agileits" role="alert">Debes ingresar el Telefono';
+                 
                    $corr4="0";
                    }else{
-                    echo $_POST['telefono'];
+                    
                     $corr4="1";
 
                    }
             if (empty($_POST['contraseña'])) {
-                    echo "Debes ingresar la contraseña";
-                    //return false;
+                // Alerta para que ingresen la contraseña
+                echo '<p class="alert alert-danger agileits" role="alert">Debes ingresar la contraseña';
+                  
                     $corr5="0";
  
              }else{
-              echo $_POST['contraseña'];
+            
               $corr5="1";
  
              }
-
+//Realizamos una validacion, si todos los campos fueron ingresados  entonces realizara la consulta
 if (($corr1=="1")&&($corr2=="1")&&($corr3=="1")&&($corr4=="1")&&($corr5=="1")){
 
+//Esta consulta sirve para agregar un nuevo registro en la tabla auxiliar
+        $query = "INSERT INTO auxiliar (id,nombre,apellidoP,apellidoM,telefono,clave) values('','".$nombre."','".$apellido."','".$apellidom."','".$telefono."','".$contraseña."')";
 
-        $query = "INSERT INTO auxiliar (ide,Nombre,Apellido_P,Apellido_M,Telefono,clave) values('','".$nombre."','".$apellido."','".$apellidom."','".$telefono."','".$contraseña."')";
-
+          //Si la consulta fue realizada correctamente se nos redireccionara a la pagina "Administrar Personal"
 if (mysqli_query($conex, $query)) {
- echo "Correcto";
     header('location: Administrar Personal.php');
 }
 else{
+      //Si la consulta no se logro completar, se nos mostrara un mensaje de error
  echo "Error: ".mysqli_error($conex);
 }
 

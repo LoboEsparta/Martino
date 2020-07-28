@@ -31,15 +31,16 @@
             
               <?php
 
-                    
 $boton1="";
+
+//Asignamos una accion al boton1
 if(isset($_POST['boton1'])){
     
-   
+   //Creamos una conexion con la BD
     $host="localhost";
 $usuario="root";
 $clave="";
-$bd="restaurante1";
+$bd="restaurante";
 
 $conexion=mysqli_connect($host,$usuario,$clave,$bd);
 
@@ -50,21 +51,26 @@ if($conexion){
 }else{
 echo "No se pudo conectar";
 }
+//Utilizamos la opcion de iniciar sesion 
     session_start();
-    
+    //Asignamos los valores del formulario a las variables usuario y clave
     $usuario=$_POST['usuario'];
     $clave=$_POST['pass'];
     
-    $q="SELECT COUNT(*) as contar from auxiliar where Nombre='$usuario' AND clave='$clave'";
+    //realizamos una consulta para buscar un campo que coincida con los datos ingresados
+    $q="SELECT COUNT(*) as contar from auxiliar where nombre='$usuario' AND clave='$clave'";
     
+    //Realizamos la consulta
     $consulta=mysqli_query($conexion,$q);
     $array=mysqli_fetch_array($consulta);
     
     if($array['contar']>0){
+        //Iniciamos sesion con el nombre del usuario ingresado
         $_SESSION['usuario']=$usuario;
+        //Nos redireccionamos a la pagina Home
     header("location: Home.html?usuario=$usuario");
     }else{
-   // echo "Datos incorrectos";
+   // En caso contrario mostramos una alerta de que los datos estan mal
     echo '<p class="alert alert-danger agileits" role="alert">Datos incorrectos!';
 
     }

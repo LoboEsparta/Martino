@@ -1,14 +1,18 @@
 <?php
+//Realizamos la conexion a la BD
 include_once 'conexion4.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
-$consulta2 = "SELECT * FROM mesero WHERE Ide>0" ;
+
+//Realizamos la consulta para seleccionar el contenido de la tabla meseros
+$consulta2 = "SELECT * FROM mesero WHERE id>0" ;
+//Ejecutamos la consulta
 $resultado2 = $conexion->prepare($consulta2);
 $resultado2->execute();
 $usuarios2 = $resultado2->fetchAll(PDO::FETCH_ASSOC);
 
 
-
+//Obtenemos las variables que nos pasan a traves del buscador
 $variable6=($_GET['variable6']);
 
 $variable7=($_GET['variable7']);
@@ -16,8 +20,6 @@ $variable7=($_GET['variable7']);
 $variable8=($_GET['variable8']);
 
 $variable9=($_GET['variable9']);
-
-
 
 $variable10=($_GET['variable10']);
 ?>
@@ -81,7 +83,7 @@ $variable10=($_GET['variable10']);
                 <div class="card border-dark mb-3">
                     <div class="card-body">
                         <h5 class="card-title">Editar Mesero</h5>
-                        
+                        <!-- Mostramos las variables obtenidas en un formulario-->
                         <form method="post" action="">
                             <input type="text" placeholder="Numero De Empleado" name="codigoNUEVO" value=" Id: <?php echo "$variable10"; ?>">
                             <h6>Nombre</h6>
@@ -112,57 +114,60 @@ $variable10=($_GET['variable10']);
         <?php
 
 $guardar="";
+//Asignamos una accion al boton "Guardar" al ser presionado
 if(isset($_POST['guardar'])){
 
- 
+ //Asiganmos los valores del formulario dentro de unas variables
 $titulo1=$_POST['renombre'];
 $categoria1=$_POST['reapellido'];
 $categoria2=$_POST['reapellidom'];
 $categoria4=$_POST['recontraseña'];
 
-$codigoNUEVO=$_POST['codigoNUEVO'];
 
-
+//Validamos que el campo no este vacio
 if (empty($_POST['renombre'])) {
+  //Mostramos una alerta para que el usuario registre el nombre
     echo '<p class="alert alert-danger agileits" role="alert">Debes ingresar el Nombre';
 
     $corr1="0";
-   //return false;
    }else{
     $corr1="1";
-   }
+   }//Validamos que el campo no este vacio
    if (empty($_POST['reapellido'])) {
+      //Mostramos una alerta para que el usuario registre el apellido Paterno
     echo '<p class="alert alert-danger agileits" role="alert">Debes ingresar el Apellido Paterno';
-   //return false;
+ 
    $corr2="0";
    }else{
     $corr2="1";
-   }
+   }//Validamos que el campo no este vacio
    if (empty($_POST['reapellidom'])) {
+      //Mostramos una alerta para que el usuario registre el Apellido Materno
     echo '<p class="alert alert-danger agileits" role="alert">Debes ingresar el Apellido Materno';
-          //return false;
+        
           $corr3="0";
    }else{
     $corr3="1";
-   }
+   }//Validamos que el campo no este vacio
   if (empty($_POST['recontraseña'])) {
+     //Mostramos una alerta para que el usuario registre la contraseña
     echo '<p class="alert alert-danger agileits" role="alert">Debes ingresar la contraseña';
-       //return false;
+    
          $corr5="0";
           }else{
           $corr5="1";
         
           }
-
+//Realizamos una condicion para que ningun campo este vacio
 if (($corr1=="1")&&($corr2=="1")&&($corr3=="1")&&($corr5=="1")){
+//Realizamos la consulta para actualizar los nuevos datos en la tabla de meseros
+$consultaActualizar ="UPDATE mesero SET nombre='$titulo1', apellidoP='$categoria1', apellidoM='$categoria2', clave='$categoria4' WHERE id=$variable10";
 
-$consultaActualizar ="UPDATE mesero SET Nombre='$titulo1', Apellido_P='$categoria1', Apellido_M='$categoria2', Clave='$categoria4' WHERE Ide=$variable10";
-
-
+//Realizamos la consulta
 $resultadoA = $conexion->prepare($consultaActualizar);
 $resultadoA->execute();
 $usuarios = $resultadoA->fetchAll(PDO::FETCH_ASSOC);
-
+//Redireccionamos a Administrar Personal
 header ("location: Administrar Personal.php");
 }}
 

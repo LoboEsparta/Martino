@@ -1,3 +1,24 @@
+
+<?php
+//Realizamos la conexion a la bd
+include_once 'conexion4.php';
+$objeto = new Conexion();
+$conexion = $objeto->Conectar();
+//Realizamos la consulta para tomar el contenido de la tabla categoria
+$consulta = "SELECT * FROM categoria WHERE id>0" ;
+$resultado = $conexion->prepare($consulta);
+$resultado->execute();
+
+//Asignamos el valor de la consulta en una variable llamada "usuarios"
+$usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+//Obtenermos los valores que se mandaron a traves del buscador
+$variable1=($_GET['variable1']);
+$variable2=($_GET['variable2']);
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -58,22 +79,55 @@
             <div class="card" style="width: 25rem;">
                 <div class="card-body">
                   <h5 class="card-title">Nuevo Nombre</h5>
-                  <form action="" method="POST">
-                    <input type="text" placeholder="Escriba el nuevo nombre de su Categoria">
+                  <form action="" method="post">
+                    <input type="text" name="nuevonombre" placeholder="Escriba el nuevo nombre de su Categoria" value="<?php echo "".$variable2;?>">
         
         
-                    <button type="submit">Cambiar Nombre</button>
+                    <button type="submit" name="guardar">Cambiar Nombre</button>
                 </form>
               </div>
             </div>
+            <?php
+
+$guardar="";
+//Asignamos una accion al boton  "Guardar"
+if(isset($_POST['guardar'])){
+
+ //Asignamos el valor del formulario a una variable
+$titulo1=$_POST['nuevonombre'];
+
+//Validamos que el formulario no este vacio
+if (empty($_POST['nuevonombre'])) {
+  //En caso de estar vacio se muestra una alerta para ingresar el nombre
+    echo '<p class="alert alert-danger agileits" role="alert">Debes ingresar el Nombre';
+
+    $corr1="0";
+   
+   }else{
+    $corr1="1";
+   }
+//Validamos que si el usuario ingreso el nombre se realice una consulta
+if (($corr1=="1")){
+//Esta consulta nos actualiza el campo con el id igual a la variable que obtuvimos del buscador
+$consultaActualizar ="UPDATE categoria SET nombre='$titulo1' WHERE id=$variable1";
+
+//Realizamos la consulta
+$resultadoA = $conexion->prepare($consultaActualizar);
+$resultadoA->execute();
+$usuarios = $resultadoA->fetchAll(PDO::FETCH_ASSOC);
+//Nos redireccionamos al Menu
+header("location:Menu.php");
+
+}}
+
+?>
 
 
             <a href="Menu.php" id="Bot">Atras</a>
             </div>
         </div>
 
-
-
+        
 
         
       </div>

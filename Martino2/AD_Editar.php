@@ -4,7 +4,7 @@ include_once 'conexion4.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 //Realizamos la consulta para tomar el contenido de la tabla ordenes
-$consulta = "SELECT * FROM auxiliar WHERE Ide>0" ;
+$consulta = "SELECT * FROM auxiliar WHERE id>0" ;
 $resultado = $conexion->prepare($consulta);
 $resultado->execute();
 
@@ -12,6 +12,8 @@ $resultado->execute();
 $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 
+/* En estas lineas asignamos el valor de las variables 1,2,3,4,5,0 estas variables nos nos pasadas a traves del buscador
+ esto con la finalidad de ser mostradas en el formulario  */
 $variable1=($_GET['variable1']);
 
 $variable2=($_GET['variable2']);
@@ -84,6 +86,7 @@ $variable0=($_GET['variable0']);
                     <div class="card-body">
                         <h5 class="card-title">Información del Administrador</h5>
                         <form method="post" action="">
+                        <!-- Estas lineas sirven para el formulario y la informacion mostrada en el es la que se nos paso en las variables 1,2,3,4,5 y 0 -->
                             <input type="text" placeholder="Id A Modificar" name="codigoNUEVO" value=" Id: <?php echo "$variable0"; ?>">
                             <h6>Nombre</h6>
                             <input type="text" placeholder="Nombre" name="renombre" value="<?php echo "$variable1"; ?>">
@@ -116,66 +119,77 @@ $variable0=($_GET['variable0']);
       <?php
 
 $guardar="";
+
+
+// Esta linea sirve para asignarle una accion al boton guardar
 if(isset($_POST['guardar'])){
 
- 
+ //Asignamos el valor a las variables con el valor del formulario 
 $titulo1=$_POST['renombre'];
 $categoria1=$_POST['reapellido'];
 $categoria2=$_POST['reapellidom'];
 $categoria3=$_POST['renumero'];
 $categoria4=$_POST['recontraseña'];
 
-$codigoNUEVO=$_POST['codigoNUEVO'];
 
-
+   
+    //Estas lineas sirven para validar que el campo del formulario no esten vacios, si lo estan se mostrara un mensaje 
+   
 if (empty($_POST['renombre'])) {
+  // Alerta para que ingresen el nombre
     echo '<p class="alert alert-danger agileits" role="alert">Debes ingresar el Nombre';
 
     $corr1="0";
-   //return false;
+   
    }else{
     $corr1="1";
    }
    if (empty($_POST['reapellido'])) {
+     // Alerta para que ingresen el apellido Paterno
     echo '<p class="alert alert-danger agileits" role="alert">Debes ingresar el Apellido Paterno';
-   //return false;
+  
    $corr2="0";
    }else{
     $corr2="1";
    }
    if (empty($_POST['reapellidom'])) {
+     // Alerta para que ingresen el apellido Materno
     echo '<p class="alert alert-danger agileits" role="alert">Debes ingresar el Apellido Materno';
-          //return false;
+       
           $corr3="0";
    }else{
     $corr3="1";
    }
    if (empty($_POST['renumero'])) {
+     // Alerta para que ingresen el Numero Telefonico
     echo '<p class="alert alert-danger agileits" role="alert">Debes ingresar el Numero';
-          //return false;
+         
           $corr4="0";
           }else{
            $corr4="1";
 
           }
   if (empty($_POST['recontraseña'])) {
+    // Alerta para que ingresen la contraseña
     echo '<p class="alert alert-danger agileits" role="alert">Debes ingresar la contraseña';
     echo "<br>";
-       //return false;
+      
          $corr5="0";
           }else{
           $corr5="1";
         
           }
-
+//Realizamos una validacion, si todos los campos fueron ingresados  entonces realizara la consulta
 if (($corr1=="1")&&($corr2=="1")&&($corr3=="1")&&($corr4=="1")&&($corr5=="1")){
+//Esta consulta sirve para actualziar el registro con el mismo id que obtuvimos en la variable0 en la barra del buscador
+$consultaActualizar ="UPDATE auxiliar SET nombre='$titulo1', apellidoP='$categoria1', apellidoM='$categoria2', telefono='$categoria3', clave='$categoria4' WHERE id=$variable0";
 
-$consultaActualizar ="UPDATE auxiliar SET Nombre='$titulo1', Apellido_P='$categoria1', Apellido_M='$categoria2', Telefono='$categoria3', clave='$categoria4' WHERE Ide=$variable0";
-
-
+//Realizamos la consulta
 $resultadoA = $conexion->prepare($consultaActualizar);
 $resultadoA->execute();
 $usuarios = $resultadoA->fetchAll(PDO::FETCH_ASSOC);
+
+//Nos redirigimos a la pagina Administrar Personal
 
 header("location:Administrar Personal.php");
 

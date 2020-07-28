@@ -1,6 +1,6 @@
 <?php
 
-//Obterner las variable
+//Obtener las variables a traves de la barra de busqueda
 
 $variable1=($_GET['variable1']);
 
@@ -11,8 +11,6 @@ $variable3=($_GET['variable3']);
 $variable4=($_GET['variable4']);
 
 $variable5=($_GET['variable5']);
-
-// Mostar las variables
 
 
 ?>
@@ -79,6 +77,7 @@ $variable5=($_GET['variable5']);
                     <div class="card-body">
                         <h5 class="card-title">Información del Administrador</h5>
                         <form action="">
+                        <!-- En estas lineas mostramos los valores que se mandaron a traves del buscador -->
                             <h6>Nombre</h6>
                       <input type="text" value="<?php echo "$variable1"; ?>" disabled >
                       <h6>Apellido Paterno</h6>

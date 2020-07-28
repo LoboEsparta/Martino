@@ -3,8 +3,8 @@
 include_once 'conexion4.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
-//Realizamos la consulta para tomar el contenido de la tabla ordenes
-$consulta = "SELECT * FROM categoria WHERE Ide>0" ;
+//Realizamos la consulta para tomar el contenido de la tabla categoria
+$consulta = "SELECT * FROM categoria WHERE id>0" ;
 $resultado = $conexion->prepare($consulta);
 $resultado->execute();
 
@@ -82,15 +82,16 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
             <?php
                          foreach ($usuarios as $usuario) {
 
-
-                          $variable1=$usuario['Ide'];
+//Aqui asignamos el valor de las variables id y nombre para pasarlas a la siguiente pagina
+                          $variable1=$usuario['id'];
+                          $variable2=$usuario['nombre'];
                                 ?>
             <div class="card border-primary mb-3" style="width: 18rem;">
-                <a href="Men_Dentro.html">
+                <a href="Men_Dentro.php?variable1=<?php echo $variable1 ?>">
                     <div class="card-body">
-                        <h5 class="card-title"><?php echo "".$usuario['Nombre'];?></h5>
+                        <h5 class="card-title"><?php echo "".$usuario['nombre'];?></h5>
                         <h6>Categoria</h6>
-                        <a href="ChangeName.html" class="btn btn-primary"<?php echo "".$usuario['Ide'];?>" id="Tamaño">Cambiar nombre</a>
+                        <a href="ChangeName.php?variable1=<?php echo "".$usuario['id'];?>&variable2=<?php echo ''.$usuario['nombre'];?>" class="btn btn-primary"<?php echo "".$usuario['id'];?> id="Tamaño">Cambiar nombre</a>
                     </div>
             </div>
 
@@ -110,29 +111,10 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
             <?php
                          }
                          ?>
-                          <?php                  
-$boton2="";
-if(isset($_POST['boton2'])){
-   /*
-  $Nuevoide=$usuario['Ide'];
-    $Nuevacat=$_POST['NuevoNom'];
-    
-        $consultaActualizar ="UPDATE categoria SET Nombre='$Nuevacat' Where Ide=$Nuevoide";
+                         
 
 
-        $resultadoActualizar = $conexion->prepare($consultaActualizar);
-        $resultadoActualizar->execute();
-        $usuarios = $resultadoActualizar->fetchAll(PDO::FETCH_ASSOC);
-       
-        echo "<br>";
-   echo '<p class="alert alert-success agileits" role="alert">Nombre cambiado '.$Nuevacat;
-          
-    */
-}
-?>
-
-
-            <!--Modal Categoria-->
+            <!--Modal para agregar Categoria-->
 
             <div class="modal fade" id="agregar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
                 aria-hidden="true">
@@ -160,17 +142,19 @@ if(isset($_POST['boton2'])){
 
             <?php                  
 $boton1="";
+//Asignamos una accion al boton1
 if(isset($_POST['boton1'])){
-   
+   //asignamos el valor que el usuario ingreso en el formulario dentro de una variable
     $cat=$_POST['categoria'];
     
-        $consultaAg ="INSERT INTO categoria ( Nombre) VALUES ('".$cat."')";
+    //Realizamos una consulta para ingresar el valor que el usuario ingreso en el formulario
+        $consultaAg ="INSERT INTO categoria ( nombre) VALUES ('".$cat."')";
 
-
+//Preparamos la consulta
         $resultadoA = $conexion->prepare($consultaAg);
         $resultadoA->execute();
         $usuarios = $resultadoA->fetchAll(PDO::FETCH_ASSOC);
-       
+       //Mostramos un mensaje de que el Menu se agrego
         echo "<br>";
    echo '<p class="alert alert-success agileits" role="alert">Menú Agregado '.$cat;
           

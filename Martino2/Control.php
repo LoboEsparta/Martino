@@ -1,3 +1,8 @@
+<?php
+$variable1=($_GET['usuario']);
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 
@@ -50,8 +55,8 @@
                           Perfil <img src="Img/user.png" height="15" id="Margen">
                         </button>
                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                          <a class="dropdown-item" href="Perfil.html">Ver Perfil <img src="Img/user - copia.png" height="15" id="User"> </a>
-                          <a class="dropdown-item" href="#">Cerrar Sesión <img src="Img/exit.png" height="15" id="Exit"></a>
+                          <a class="dropdown-item" href="Perfil.php?variable1=<?php echo $variable1 ?>">Ver Perfil <img src="Img/user - copia.png" height="15" id="User"> </a>
+                          <a class="dropdown-item" href="ControlP.php">Cerrar Sesión <img src="Img/exit.png" height="15" id="Exit"></a>
                         </div>
                       </div>
 

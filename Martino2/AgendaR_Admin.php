@@ -3,8 +3,8 @@
 include_once 'conexion4.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
-//Realizamos la consulta para tomar el contenido de la tabla ordenes
-$consulta = "SELECT * FROM reservacion WHERE Ide>0" ;
+//Realizamos la consulta para tomar el contenido de la tabla reservacion
+$consulta = "SELECT * FROM reservacion WHERE id>0" ;
 $resultado = $conexion->prepare($consulta);
 $resultado->execute();
 
@@ -73,8 +73,8 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
             <div class="row">
 
             <?php
-                    //Utilizamos un forreach para hacer la cantidad de cards que vamos a ocupar, y de misma forma mostrar el contenido de los pedidos
-                            foreach ($usuarios as $usuario) {
+                    /* Utilizamos un forreach para hacer la cantidad de cards que vamos a ocupar */
+                    foreach ($usuarios as $usuario) {
                                 ?>
 
                 <div class="col-md-5">
@@ -82,8 +82,8 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                 <div class="card" style="width: 18rem;">
                         <div class="card-body"> <img src="Img/bell.png" height="20" data-toggle="modal"
-                                data-target="#exampleModal<?php echo "".$usuario['Ide'];?>">
-                            <h5 class="card-title">Reservacion: <?php echo "".$usuario['Ide'];?></h5>
+                                data-target="#exampleModal<?php echo "".$usuario['id'];?>">
+                            <h5 class="card-title">Reservacion: <?php echo "".$usuario['id'];?></h5>
                             <p class="card-text">Estado: Ocupada</p>
                         </div>
                     </div>
@@ -111,19 +111,22 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
     <form method="post" action="">
 
     <?php
-                    //Utilizamos un forreach para hacer la cantidad de cards que vamos a ocupar, y de misma forma mostrar el contenido de los pedidos
-                            foreach ($usuarios as $usuario) {
-                                $variable1=$usuario['Ide'];
+                   /* Utilizamos un forreach para hacer la cantidad de cards que vamos a ocupar, 
+                    y de misma forma mostrar el contenido de las tablas */
+                      foreach ($usuarios as $usuario) {
+
+                        //Asignamos el valor a la variable1 ya que la utilizaremos para el boton borrar
+                                $variable1=$usuario['id'];
                                 ?>
 
     <!--Boton bell-->
 
-    <div class="modal fade" id="exampleModal<?php echo "".$usuario['Ide'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal fade" id="exampleModal<?php echo "".$usuario['id'];?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Reservación <?php echo "".$usuario['Ide'];?></h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Reservación <?php echo "".$usuario['id'];?></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -132,23 +135,24 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     <h5 class="card-title">Reservación</h5>
                  
                                 
-                   
-                        <h7><input type="text" value="ID de Cliente: <?php echo "".$usuario['Id_Clientes'];?>" disabled ></h7>
+                   <!-- Mostramos el contenido del registro en un formulario que esta deshabilitado -->
+                        <h7><input type="text" value="ID de Cliente: <?php echo "".$usuario['id_cliente'];?>" disabled ></h7>
                        <h5></h5>
-                        <input type="text" value=" Fecha de Reservacion:  <?php echo "".$usuario['Fecha'];?>" disabled >
+                        <input type="text" value=" Fecha de Reservacion:  <?php echo "".$usuario['fecha'];?>" disabled >
                         <h5> </h5>
-                        <input type="text" value="Id De Mesa: <?php echo "".$usuario['id_Mesa'];?>" disabled >
+                        <input type="text" value="Id De Mesa: <?php echo "".$usuario['num_mesas'];?>" disabled >
                         <h5></h5>
                         <input type="text" value="Telefono: <?php echo "".$usuario['telefono'];?>" disabled >
                         <h5></h5>
-                        <input type="text" value="Hora de Reservacion: <?php echo "".$usuario['Hora'];?>" disabled >
+                        <input type="text" value="Hora de Reservacion: <?php echo "".$usuario['hora'];?>" disabled >
 
                   
 
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn">Aceptar</button>
+                    <button type="submit" class="btn">Aceptar</button>
+                    <!-- Mandamos las variables a traves de la barra de busqueda -->
                     <button type="submit" class="btn" id="Eliminar" value="" name="boton1"><a href="Eliminar_Reservacion.php?variable1=<?php echo $variable1 ?>">Eliminar</button>
                 </div>
             </div>
@@ -159,34 +163,7 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
                             }
                             ?>
   </form>
-  <?php
-/*
-//Asignamos una accion al boton 1 en este caso es para eliminar el registro
-                                 $boton1="";
-                                 if(isset($_POST['boton1'])){
-                                    //Cuando el usuario de click en el boton "Finalizado" el pedido se borrara
-                                   
-                                  $codigo=$usuario['Ide']; 
-                                   
-                                 //  echo ($codigo);
-                                  //Realizamos la consulta para eliminar en donde el registro que se borrara es el que presiono el usuario
-                                    /* $consultaBorrar ="DELETE FROM ordenes WHERE NumMesa=$codigo";
-                                 
-                                 
-                                     $resultadoBorrar = $conexion->prepare($consultaBorrar);
-                                     $resultadoBorrar->execute();
-                                     $usuarios = $resultadoBorrar->fetchAll(PDO::FETCH_ASSOC);
-                                     echo '<script language="javascript">';
-                                     echo 'alert("La reservación: '.$codigo.' se ha eliminado")';
-                                     echo '</script>';
-                                
-                                 }*/
-                                 ?>
-
-
-
-
-
+ 
       </div>
     </div>
 </div>

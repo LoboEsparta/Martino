@@ -1,5 +1,5 @@
 <?php 
-
+//realizamos una conexion a la BD
 $server = "localhost";
 $user = "root";
 $pass = "";
@@ -10,7 +10,7 @@ $conex=mysqli_connect($server,$user,$pass,$bd);
   die("Error: ".mysqli_connect_error());
  }
 
-
+//Asignamos el valor de las variables que el usuario ingrese en el formulario
  $nombre=filter_input(INPUT_POST, 'nombre');
 
 $apellido=filter_input(INPUT_POST, 'apellido');
@@ -88,54 +88,53 @@ $contraseña=filter_input(INPUT_POST, 'contraseña');
 
 $boton1="";
 
-
+//Asignamos una accion al presionar el boton1
 if(isset($_POST["boton1"])){
-     
+     //Validamos que el nombre no este vacio
       if (empty($nombre)) {
-             echo "Debes ingresar el nombre\n";
+        echo '<p class="alert alert-danger agileits" role="alert">Debes ingresar el Nombre';
              $corr1="0";
-            //return false;
+         
             }else{
-             echo $_POST['nombre'];
+            
              $corr1="1";
-            }
+            }  //Validamos que el apellido no este vacio
             if (empty($_POST['apellido'])) {
-            echo "Debes ingresar el apellido";
-            //return false;
+                echo '<p class="alert alert-danger agileits" role="alert">Debes ingresar el Apellido Paterno';
+       
             $corr2="0";
             }else{
-             echo $_POST['apellido'];
              $corr2="1";
 
-            }
+            }  //Validamos que el apellido materno no este vacio
             if (empty($_POST['apellidom'])) {
-                   echo "Debes ingresar el apellido Materno";
-                   //return false;
+                echo '<p class="alert alert-danger agileits" role="alert">Debes ingresar el Apellido Materno';
+                   
                    $corr3="0";
 
             }else{
-             echo $_POST['apellidom'];
+    
              $corr3="1";
 
-            }
+            }  //Validamos que el campo contraseña no este vacio
             if (empty($_POST['contraseña'])) {
-                    echo "Debes ingresar la contraseña";
-                    //return false;
+                echo '<p class="alert alert-danger agileits" role="alert">Debes ingresar la contraseña';
+                   
                     $corr5="0";
  
              }else{
-              echo $_POST['contraseña'];
+              
               $corr5="1";
  
              }
-
+//Realizamos una condicion para que ningun campo este vacio
 if (($corr1=="1")&&($corr2=="1")&&($corr3=="1")&&($corr5=="1")){
 
+//Realizamos la consulta para ingresar los nuevos datos en el campo meseros
+        $query = "INSERT INTO mesero (id,nombre,apellidoP,apellidoM,clave,id_turno) values('','".$nombre."','".$apellido."','".$apellidom."','".$contraseña."',2)";
 
-        $query = "INSERT INTO mesero (ide,Nombre,Apellido_P,Apellido_M,Clave) values('','".$nombre."','".$apellido."','".$apellidom."','".$contraseña."')";
-
+        //Si la consulta se realizo satisfactoriamente, se nos redireccionara a la pagina Administrar Personal
 if (mysqli_query($conex, $query)) {
- echo "Correcto";
     header('location: Administrar Personal.php');
 }
 else{
