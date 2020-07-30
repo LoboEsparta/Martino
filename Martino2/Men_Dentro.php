@@ -84,7 +84,7 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
                         Agregar
                     </button>
                     <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                        <a class="dropdown-item" href="A_Producto.php">Producto<img src="Img/anadir.png"
+                        <a class="dropdown-item" href="A_Producto.php?variable1=<?php echo $variable1 ?>">Producto<img src="Img/anadir.png"
                                 height="24"></a>
                     </div>
                 </div>
@@ -105,8 +105,8 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
                           ?>
                           <?php
 //Asiganmos el valor a la variable11 para pasarla a la siguiente pagina
-$variable11=$usuario['nombre'];
-                           $variable14=$usuario['nombre'];
+$variable11=$usuario['id'];
+                           $variable14=$usuario['id'];
 
                                 ?>
                         <div class="card border-primary mb-3" style="width: 18rem;">

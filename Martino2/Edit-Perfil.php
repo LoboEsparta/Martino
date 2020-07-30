@@ -1,4 +1,11 @@
 <?php
+session_start();
+
+if(!isset($_SESSION['usuarioing2'])) {
+	header("Location: controlP.php");
+}
+
+
 $variable1=($_GET['variable1']);
 //Realizamos la conexion a la bd
 include_once 'conexion4.php';
@@ -154,7 +161,7 @@ $resultadoA = $conexion->prepare($consultaActualizar);
 $resultadoA->execute();
 $usuarios = $resultadoA->fetchAll(PDO::FETCH_ASSOC);
 
-header("location:Control.php?variable1=$variable1");
+header("location:Control.php");
 
 }}
 

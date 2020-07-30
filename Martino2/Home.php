@@ -1,3 +1,13 @@
+
+<?php
+session_start();
+
+if(!isset($_SESSION['usuarioing'])) {
+	header("Location: index.php");
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,7 +18,7 @@
      <link rel="stylesheet" href="CSS/Principal.css">
      <link rel="stylesheet" href="CSS/Home.css">
      <link rel="stylesheet" href="CSS/Estilos.css">
-     <title>Martino</title>
+     <title>Bienvenido <?php echo $_SESSION['usuarioing'] ?></title>
      <link rel="Icon" href="Img/martino.ico">
 </head>
 <body>
@@ -23,7 +33,7 @@
           <h1>Martino</h1>
         </div>
         <div class="menu list-group-flush">
-          <a href="Home.html" id="Top" class="list-group-item list-group-item-action"> <img src="Img/Home.png" height="20" id="none"><img src="Img/Home.png" height="26" id="grande"> <span id="Negro"><img src="Img/Home2.png" height="35"></span> <span>Home</span></a>
+          <a href="Home.php" id="Top" class="list-group-item list-group-item-action"> <img src="Img/Home.png" height="20" id="none"><img src="Img/Home.png" height="26" id="grande"> <span id="Negro"><img src="Img/Home2.png" height="35"></span> <span>Home</span></a>
           <a href="Tablero_Mesero.php" class="list-group-item list-group-item-action"> <img src="Img/Mesero.png" height="20" id="none"><img src="Img/Mesero.png" height="26" id="grande"> <span id="Negro"><img src="Img/Mesero2.png" height="35"></span><span>Tablero de Meseros</span></a>
           <a href="Tablero_Cocinero.php" class="list-group-item list-group-item-action"> <img src="Img/Chef.png" height="20" id="none"><img src="Img/Chef.png" height="26" id="grande"> <span id="Negro"><img src="Img/Chef2.png" height="35"></span><span>Tablero de Cocineros</span></a>
           <a href="ControlP.php" class="list-group-item list-group-item-action" id="linea"> <img src="Img/Control.png" height="20" id="none"><img src="Img/Control.png" height="26" id="grande"> <span id="Negro"><img src="Img/Control2.png" height="35"></span> <span>Control</span></a>

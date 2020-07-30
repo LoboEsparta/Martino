@@ -1,4 +1,21 @@
 <?php
+session_start();
+
+if(!isset($_SESSION['usuarioing'])) {
+	header("Location: index.php");
+}
+?>
+<?php
+
+/*
+session_start();
+$usuarioingresado=$_SESSION['username'];
+//$usuario=filter_input($_SESSION,"username");
+
+if(!isset($_SESSION['username'])) {
+	header("Location: index.php");
+}*/
+
 //Realizamos la conexion a la bd
 include_once 'conexion.php';
 $objeto = new Conexion();
@@ -10,6 +27,10 @@ $resultado->execute();
 
 //Asignamos el valor de la consulta en una variable llamada "usuarios"
 $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+
 ?>
 
 
@@ -38,7 +59,7 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <h1>Martino</h1>
             </div>
             <div class="menu list-group-flush">
-                <a href="Home.html" id="Top" class="list-group-item list-group-item-action"> <img src="Img/Home.png"
+                <a href="Home.php" id="Top" class="list-group-item list-group-item-action"> <img src="Img/Home.png"
                         height="20" id="none"><img src="Img/Home.png" height="26" id="grande"> <span id="Negro"><img
                             src="Img/Home2.png" height="35"></span> <span>Home</span></a>
                 <a href="Tablero_Mesero.php" class="list-group-item list-group-item-action"> <img src="Img/Mesero.png"
@@ -81,10 +102,23 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <form method="get">
                                     <p class="card-text">
                                         <!-- Aqui se muestra el contenido de los pedidos -->
-                                        <h3> MESA <?php echo "".$usuario['id']?></h3>
 
-                                        <li><?php echo "Orden: ".$usuario['descripcion'] ?></li> 
 
+                                        <h3> ORDEN <?php echo "".$usuario['id']?></h3>
+<?php
+                  $noc=$usuario['id'];
+$consulta14 = "SELECT comida_pedido.id_comida, comida_pedido.id_pedido, comida_pedido.cantidad, comida.nombre from comida_pedido inner join comida on comida_pedido.id_comida=comida.id WHERE id_pedido='$noc'";
+$resultado14 = $conexion->prepare($consulta14);
+$resultado14->execute();
+$usuarios14 = $resultado14->fetchAll(PDO::FETCH_ASSOC);
+                    /* Utilizamos un forreach para hacer la cantidad de cards que vamos a ocupar, 
+                    y de misma forma mostrar el contenido de los pedidos */
+                            foreach ($usuarios14 as $usuario14) {
+?>
+                                        <li><?php echo $usuario14['cantidad']; ?>  <?php echo $usuario14['nombre'] ?></li> 
+                                        <?php
+                            }
+?>
                                     </p>
                                     <div class="row">
                                         <div class="col-md-6">

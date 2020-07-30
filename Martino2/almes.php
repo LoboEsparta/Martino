@@ -11,7 +11,8 @@ include_once 'conexion4.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 //Realizamos la consulta para tomar el contenido de la tabla pago
-$consulta = "SELECT * from pago where fecha like ('2020%')";
+
+$consulta = "SELECT * from pago WHERE fecha like ('2020-07%')";
 $resultado = $conexion->prepare($consulta);
 $resultado->execute();
 
@@ -103,7 +104,7 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
           <a href="RegistroVentas.php"> <button>Total al dia</button></a>
         </div>
         <div class="col-md-4">
-        <a href="almes.php">  <button>Total al mes</button></a>
+        <a href="almes.php"> <button>Total al mes</button></a>
         </div>
         <div class="col-md-4">
            <a href="alaño.php"> <button>Total al año</button></a>

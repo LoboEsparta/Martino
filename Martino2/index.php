@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -52,7 +54,7 @@ if($conexion){
 echo "No se pudo conectar";
 }
 //Utilizamos la opcion de iniciar sesion 
-    session_start();
+    
     //Asignamos los valores del formulario a las variables usuario y clave
     $usuario=$_POST['usuario'];
     $clave=$_POST['pass'];
@@ -66,9 +68,10 @@ echo "No se pudo conectar";
     
     if($array['contar']>0){
         //Iniciamos sesion con el nombre del usuario ingresado
-        $_SESSION['usuario']=$usuario;
+        session_start();
+        $_SESSION['usuarioing']=$usuario;
         //Nos redireccionamos a la pagina Home
-    header("location: Home.html?usuario=$usuario");
+    header("location: Home.php");
     }else{
    // En caso contrario mostramos una alerta de que los datos estan mal
     echo '<p class="alert alert-danger agileits" role="alert">Datos incorrectos!';

@@ -1,10 +1,18 @@
 <?php
+
+session_start();
+
+if(!isset($_SESSION['usuarioing2'])) {
+	header("Location: controlP.php");
+}
+
 //Realizamos la conexion a la bd
 include_once 'conexion4.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 //Realizamos la consulta para tomar el contenido de la tabla pago
-$consulta = "SELECT * FROM pago WHERE id>0" ;
+
+$consulta = "SELECT * from pago WHERE fecha=('2020-07-30')";
 $resultado = $conexion->prepare($consulta);
 $resultado->execute();
 
@@ -87,16 +95,16 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
     <div class="row">
         <div class="col-md-12" id="alinear">
-            <a href="Control.html">Atras</a>
+            <a href="Control.php">Atras</a>
         </div>
 
     </div>
     <div class="row">
         <div class="col-md-4">
-            <button>Total al dia</button>
+          <a href="RegistroVentas.php"> <button>Total al dia</button></a>
         </div>
         <div class="col-md-4">
-            <button>Total al mes</button>
+        <a href="almes.php"> <button>Total al mes</button></a>
         </div>
         <div class="col-md-4">
            <a href="alaño.php"> <button>Total al año</button></a>

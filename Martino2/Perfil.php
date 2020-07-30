@@ -1,11 +1,19 @@
 <?php
-$variable1=($_GET['variable1']);
+
+session_start();
+
+if(!isset($_SESSION['usuarioing2'])) {
+	header("Location: controlP.php");
+}
+
+
+$variable1=$_SESSION['usuarioing2'];
 //Realizamos la conexion a la bd
 include_once 'conexion4.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 //Realizamos la consulta para tomar el contenido de la tabla ordenes
-$consulta = "SELECT * FROM gerente WHERE password=$variable1" ;
+$consulta = "SELECT * FROM gerente WHERE password='$variable1'" ;
 $resultado = $conexion->prepare($consulta);
 $resultado->execute();
 
@@ -44,7 +52,7 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
               <h1>Martino</h1>
             </div>
             <div class="menu list-group-flush">
-              <a href="Home.html" id="Top" class="list-group-item list-group-item-action"> <img src="Img/Home.png" height="20" id="none"><img src="Img/Home.png" height="26" id="grande"> <span id="Negro"><img src="Img/Home2.png" height="35"></span> <span>Home</span></a>
+              <a href="Home.php" id="Top" class="list-group-item list-group-item-action"> <img src="Img/Home.png" height="20" id="none"><img src="Img/Home.png" height="26" id="grande"> <span id="Negro"><img src="Img/Home2.png" height="35"></span> <span>Home</span></a>
               <a href="Tablero_Mesero.php" class="list-group-item list-group-item-action"> <img src="Img/Mesero.png" height="20" id="none"><img src="Img/Mesero.png" height="26" id="grande"> <span id="Negro"><img src="Img/Mesero2.png" height="35"></span><span>Tablero de Meseros</span></a>
               <a href="Tablero_Cocinero.php" class="list-group-item list-group-item-action"> <img src="Img/Chef.png" height="20" id="none"><img src="Img/Chef.png" height="26" id="grande"> <span id="Negro"><img src="Img/Chef2.png" height="35"></span><span>Tablero de Cocineros</span></a>
               <a href="ControlP.php" class="list-group-item list-group-item-action" id="linea"> <img src="Img/Control.png" height="20" id="none"><img src="Img/Control.png" height="26" id="grande"> <span id="Negro"><img src="Img/Control2.png" height="35"></span> <span>Control</span></a>
@@ -120,7 +128,7 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
 
 
-        <a href="Control.html" id="Con">Atras</a>
+        <a href="Control.php" id="Con">Atras</a>
 
 
 

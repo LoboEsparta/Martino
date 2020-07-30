@@ -2,10 +2,10 @@
 -- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Jul 27, 2020 at 12:27 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.5
+-- Servidor: 127.0.0.1
+-- Tiempo de generación: 30-07-2020 a las 19:27:39
+-- Versión del servidor: 10.4.11-MariaDB
+-- Versión de PHP: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `restaurante`
+-- Base de datos: `restaurante`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `auxiliar`
+-- Estructura de tabla para la tabla `auxiliar`
 --
 
 CREATE TABLE `auxiliar` (
@@ -37,7 +37,7 @@ CREATE TABLE `auxiliar` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Dumping data for table `auxiliar`
+-- Volcado de datos para la tabla `auxiliar`
 --
 
 INSERT INTO `auxiliar` (`id`, `nombre`, `apellidoP`, `apellidoM`, `clave`, `telefono`) VALUES
@@ -49,7 +49,7 @@ INSERT INTO `auxiliar` (`id`, `nombre`, `apellidoP`, `apellidoM`, `clave`, `tele
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categoria`
+-- Estructura de tabla para la tabla `categoria`
 --
 
 CREATE TABLE `categoria` (
@@ -58,7 +58,7 @@ CREATE TABLE `categoria` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Dumping data for table `categoria`
+-- Volcado de datos para la tabla `categoria`
 --
 
 INSERT INTO `categoria` (`id`, `nombre`) VALUES
@@ -76,7 +76,7 @@ INSERT INTO `categoria` (`id`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `cliente`
+-- Estructura de tabla para la tabla `cliente`
 --
 
 CREATE TABLE `cliente` (
@@ -88,7 +88,7 @@ CREATE TABLE `cliente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Dumping data for table `cliente`
+-- Volcado de datos para la tabla `cliente`
 --
 
 INSERT INTO `cliente` (`id`, `nombre`, `apellidoP`, `apellidoM`, `telefono`) VALUES
@@ -101,7 +101,7 @@ INSERT INTO `cliente` (`id`, `nombre`, `apellidoP`, `apellidoM`, `telefono`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comida`
+-- Estructura de tabla para la tabla `comida`
 --
 
 CREATE TABLE `comida` (
@@ -113,13 +113,13 @@ CREATE TABLE `comida` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Dumping data for table `comida`
+-- Volcado de datos para la tabla `comida`
 --
 
 INSERT INTO `comida` (`id`, `nombre`, `precio`, `descripcion`, `id_categoria`) VALUES
 (1, 'Pipian', 80, 'pipían de pollo de tomatillo verde, y semilla de calabaza de ajonjolí  ', 607),
 (2, 'Mole', 60, 'mole poblano con  principalmente a base de chiles y especias, y que son espesadas con masa de maíz ', 607),
-(3, 'Alubias', 40, 'Alubias estilo oaxaca con costillita de cerdo ', 606),
+(3, 'Alubias', 41, 'Nuevo', 606),
 (5, 'Frijoles charros', 50, 'Consiste en frijoles con una variedad de ingredientes al estilo del norte', 608),
 (6, 'Trufas de cava y frambuesa', 120, ' nos tienen robado el corazón...¡y el estómago! frutas bañadas en chocolate con ingredientes muy deliciosos ', 603),
 (7, 'Tarta de galletas', 50, 'tarta echa con galletas bañadas en chocolate una explosión de sabor ', 603),
@@ -139,7 +139,7 @@ INSERT INTO `comida` (`id`, `nombre`, `precio`, `descripcion`, `id_categoria`) V
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comida_ingredientes`
+-- Estructura de tabla para la tabla `comida_ingredientes`
 --
 
 CREATE TABLE `comida_ingredientes` (
@@ -148,7 +148,7 @@ CREATE TABLE `comida_ingredientes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Dumping data for table `comida_ingredientes`
+-- Volcado de datos para la tabla `comida_ingredientes`
 --
 
 INSERT INTO `comida_ingredientes` (`id_comida`, `id_ingrediente`) VALUES
@@ -173,29 +173,31 @@ INSERT INTO `comida_ingredientes` (`id_comida`, `id_ingrediente`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `comida_pedido`
+-- Estructura de tabla para la tabla `comida_pedido`
 --
 
 CREATE TABLE `comida_pedido` (
   `id_comida` int(11) NOT NULL,
-  `id_pedido` int(11) NOT NULL
+  `id_pedido` int(11) NOT NULL,
+  `cantidad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Dumping data for table `comida_pedido`
+-- Volcado de datos para la tabla `comida_pedido`
 --
 
-INSERT INTO `comida_pedido` (`id_comida`, `id_pedido`) VALUES
-(2, 1),
-(2, 1),
-(2, 2),
-(2, 2),
-(18, 2);
+INSERT INTO `comida_pedido` (`id_comida`, `id_pedido`, `cantidad`) VALUES
+(19, 1, 3),
+(16, 1, 2),
+(8, 3, 1),
+(11, 2, 1),
+(18, 1, 2),
+(3, 1, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `factura`
+-- Estructura de tabla para la tabla `factura`
 --
 
 CREATE TABLE `factura` (
@@ -206,7 +208,7 @@ CREATE TABLE `factura` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `gerente`
+-- Estructura de tabla para la tabla `gerente`
 --
 
 CREATE TABLE `gerente` (
@@ -219,7 +221,7 @@ CREATE TABLE `gerente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Dumping data for table `gerente`
+-- Volcado de datos para la tabla `gerente`
 --
 
 INSERT INTO `gerente` (`id`, `nombre`, `apellidoP`, `apellidoM`, `telefono`, `password`) VALUES
@@ -233,7 +235,7 @@ INSERT INTO `gerente` (`id`, `nombre`, `apellidoP`, `apellidoM`, `telefono`, `pa
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ingredientes`
+-- Estructura de tabla para la tabla `ingredientes`
 --
 
 CREATE TABLE `ingredientes` (
@@ -242,7 +244,7 @@ CREATE TABLE `ingredientes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Dumping data for table `ingredientes`
+-- Volcado de datos para la tabla `ingredientes`
 --
 
 INSERT INTO `ingredientes` (`id`, `nombre`) VALUES
@@ -268,35 +270,53 @@ INSERT INTO `ingredientes` (`id`, `nombre`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mesa`
+-- Estructura de tabla para la tabla `mesa`
 --
 
 CREATE TABLE `mesa` (
   `id` int(11) NOT NULL,
-  `numero` int(11) NOT NULL,
-  `id_reservacion` int(11) DEFAULT NULL
+  `numero` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Dumping data for table `mesa`
+-- Volcado de datos para la tabla `mesa`
 --
 
-INSERT INTO `mesa` (`id`, `numero`, `id_reservacion`) VALUES
-(100, 1, NULL),
-(101, 2, NULL),
-(103, 3, NULL),
-(104, 4, NULL),
-(105, 5, NULL),
-(106, 6, NULL),
-(107, 7, NULL),
-(108, 8, NULL),
-(109, 9, NULL),
-(110, 10, NULL);
+INSERT INTO `mesa` (`id`, `numero`) VALUES
+(100, 1),
+(101, 2),
+(103, 3),
+(104, 4),
+(105, 5),
+(106, 6),
+(107, 7),
+(108, 8),
+(109, 9),
+(110, 10);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mesero`
+-- Estructura de tabla para la tabla `mesa_reservacion`
+--
+
+CREATE TABLE `mesa_reservacion` (
+  `id_mesa` int(11) NOT NULL,
+  `id_reservacion` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
+
+--
+-- Volcado de datos para la tabla `mesa_reservacion`
+--
+
+INSERT INTO `mesa_reservacion` (`id_mesa`, `id_reservacion`) VALUES
+(100, 1),
+(101, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mesero`
 --
 
 CREATE TABLE `mesero` (
@@ -309,7 +329,7 @@ CREATE TABLE `mesero` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Dumping data for table `mesero`
+-- Volcado de datos para la tabla `mesero`
 --
 
 INSERT INTO `mesero` (`id`, `nombre`, `apellidoP`, `apellidoM`, `clave`, `id_turno`) VALUES
@@ -321,7 +341,7 @@ INSERT INTO `mesero` (`id`, `nombre`, `apellidoP`, `apellidoM`, `clave`, `id_tur
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pago`
+-- Estructura de tabla para la tabla `pago`
 --
 
 CREATE TABLE `pago` (
@@ -339,18 +359,18 @@ CREATE TABLE `pago` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Dumping data for table `pago`
+-- Volcado de datos para la tabla `pago`
 --
 
 INSERT INTO `pago` (`id`, `fecha`, `hora`, `subtotal`, `total`, `IVA`, `propina`, `id_pedido`, `id_cliente`, `id_gerente`, `id_auxiliar`) VALUES
 (1, '2020-07-26', '00:00:09', 120, 135, 15, 0, 1, 5, 1, NULL),
-(3, '2020-07-26', '00:06:00', 150, 165, 15, 0, 2, 4, NULL, 3),
-(4, '2020-07-26', '00:29:10', 180, 220, 20, 20, 3, 2, 1, NULL);
+(3, '2020-06-26', '00:06:00', 150, 165, 15, 0, 2, 4, NULL, 3),
+(4, '2020-07-30', '00:29:10', 180, 220, 20, 20, 3, 2, 1, NULL);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pedido`
+-- Estructura de tabla para la tabla `pedido`
 --
 
 CREATE TABLE `pedido` (
@@ -359,24 +379,23 @@ CREATE TABLE `pedido` (
   `estado` varchar(20) COLLATE latin1_spanish_ci NOT NULL,
   `hora` time NOT NULL,
   `fecha` date NOT NULL,
-  `descripcion` varchar(150) COLLATE latin1_spanish_ci NOT NULL DEFAULT ' platillo entrada: platillo principal: postre: bebida:',
   `id_cliente` int(11) NOT NULL,
   `id_mesero` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Dumping data for table `pedido`
+-- Volcado de datos para la tabla `pedido`
 --
 
-INSERT INTO `pedido` (`id`, `clave`, `estado`, `hora`, `fecha`, `descripcion`, `id_cliente`, `id_mesero`) VALUES
-(1, 4544, 'Activo', '20:37:05', '2020-07-24', '\r\nplatillo entrada: \r\nplatillo principal: 2 platos de moles\r\npostre: \r\nbebida: ', 5, 1),
-(2, 3456, 'Activo', '21:01:49', '2020-07-24', '\r\nplatillo entrada: 1 crema\r\nplatillo principal: 2 plato de mole\r\npostre:\r\nbebida:', 4, 1),
-(3, 2020, 'Activo', '21:05:52', '2020-07-24', '\r\nplatillo entrada:\r\nplatillo principal:2 platos de albondigas\r\npostre:\r\nbebida:1 agua mineral', 2, 3);
+INSERT INTO `pedido` (`id`, `clave`, `estado`, `hora`, `fecha`, `id_cliente`, `id_mesero`) VALUES
+(1, 4544, 'Activo', '20:37:05', '2020-07-24', 5, 1),
+(2, 3456, 'Activo', '21:01:49', '2020-07-24', 4, 1),
+(3, 2020, 'Inactivo', '21:05:52', '2020-07-24', 2, 3);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `pedido_mesa`
+-- Estructura de tabla para la tabla `pedido_mesa`
 --
 
 CREATE TABLE `pedido_mesa` (
@@ -385,7 +404,7 @@ CREATE TABLE `pedido_mesa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Dumping data for table `pedido_mesa`
+-- Volcado de datos para la tabla `pedido_mesa`
 --
 
 INSERT INTO `pedido_mesa` (`id_mesa`, `id_pedido`) VALUES
@@ -395,7 +414,7 @@ INSERT INTO `pedido_mesa` (`id_mesa`, `id_pedido`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `reservacion`
+-- Estructura de tabla para la tabla `reservacion`
 --
 
 CREATE TABLE `reservacion` (
@@ -408,7 +427,7 @@ CREATE TABLE `reservacion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Dumping data for table `reservacion`
+-- Volcado de datos para la tabla `reservacion`
 --
 
 INSERT INTO `reservacion` (`id`, `fecha`, `hora`, `telefono`, `id_cliente`, `num_mesas`) VALUES
@@ -417,7 +436,7 @@ INSERT INTO `reservacion` (`id`, `fecha`, `hora`, `telefono`, `id_cliente`, `num
 -- --------------------------------------------------------
 
 --
--- Table structure for table `turno`
+-- Estructura de tabla para la tabla `turno`
 --
 
 CREATE TABLE `turno` (
@@ -426,7 +445,7 @@ CREATE TABLE `turno` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_spanish_ci;
 
 --
--- Dumping data for table `turno`
+-- Volcado de datos para la tabla `turno`
 --
 
 INSERT INTO `turno` (`id`, `nombre`) VALUES
@@ -434,83 +453,89 @@ INSERT INTO `turno` (`id`, `nombre`) VALUES
 (2, 'Despertino');
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `auxiliar`
+-- Indices de la tabla `auxiliar`
 --
 ALTER TABLE `auxiliar`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `categoria`
+-- Indices de la tabla `categoria`
 --
 ALTER TABLE `categoria`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `cliente`
+-- Indices de la tabla `cliente`
 --
 ALTER TABLE `cliente`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `comida`
+-- Indices de la tabla `comida`
 --
 ALTER TABLE `comida`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_categoria` (`id_categoria`);
 
 --
--- Indexes for table `comida_ingredientes`
+-- Indices de la tabla `comida_ingredientes`
 --
 ALTER TABLE `comida_ingredientes`
   ADD KEY `id_comida` (`id_comida`,`id_ingrediente`),
   ADD KEY `id_ingrediente` (`id_ingrediente`);
 
 --
--- Indexes for table `comida_pedido`
+-- Indices de la tabla `comida_pedido`
 --
 ALTER TABLE `comida_pedido`
   ADD KEY `id_comida` (`id_comida`,`id_pedido`),
   ADD KEY `id_pedido` (`id_pedido`);
 
 --
--- Indexes for table `factura`
+-- Indices de la tabla `factura`
 --
 ALTER TABLE `factura`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_pago` (`id_pago`);
 
 --
--- Indexes for table `gerente`
+-- Indices de la tabla `gerente`
 --
 ALTER TABLE `gerente`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `ingredientes`
+-- Indices de la tabla `ingredientes`
 --
 ALTER TABLE `ingredientes`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `mesa`
+-- Indices de la tabla `mesa`
 --
 ALTER TABLE `mesa`
-  ADD PRIMARY KEY (`id`),
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `mesa_reservacion`
+--
+ALTER TABLE `mesa_reservacion`
+  ADD KEY `id_mesa` (`id_mesa`,`id_reservacion`),
   ADD KEY `id_reservacion` (`id_reservacion`);
 
 --
--- Indexes for table `mesero`
+-- Indices de la tabla `mesero`
 --
 ALTER TABLE `mesero`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_turno` (`id_turno`);
 
 --
--- Indexes for table `pago`
+-- Indices de la tabla `pago`
 --
 ALTER TABLE `pago`
   ADD PRIMARY KEY (`id`),
@@ -520,7 +545,7 @@ ALTER TABLE `pago`
   ADD KEY `id_auxiliar` (`id_auxiliar`);
 
 --
--- Indexes for table `pedido`
+-- Indices de la tabla `pedido`
 --
 ALTER TABLE `pedido`
   ADD PRIMARY KEY (`id`),
@@ -528,145 +553,146 @@ ALTER TABLE `pedido`
   ADD KEY `id_mesero` (`id_mesero`);
 
 --
--- Indexes for table `pedido_mesa`
+-- Indices de la tabla `pedido_mesa`
 --
 ALTER TABLE `pedido_mesa`
   ADD KEY `id_mesa` (`id_mesa`,`id_pedido`),
   ADD KEY `id_pedido` (`id_pedido`);
 
 --
--- Indexes for table `reservacion`
+-- Indices de la tabla `reservacion`
 --
 ALTER TABLE `reservacion`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id_cliente` (`id_cliente`);
 
 --
--- Indexes for table `turno`
+-- Indices de la tabla `turno`
 --
 ALTER TABLE `turno`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT de las tablas volcadas
 --
 
 --
--- AUTO_INCREMENT for table `auxiliar`
+-- AUTO_INCREMENT de la tabla `auxiliar`
 --
 ALTER TABLE `auxiliar`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `categoria`
+-- AUTO_INCREMENT de la tabla `categoria`
 --
 ALTER TABLE `categoria`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=611;
 
 --
--- AUTO_INCREMENT for table `cliente`
+-- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `comida`
+-- AUTO_INCREMENT de la tabla `comida`
 --
 ALTER TABLE `comida`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT for table `factura`
+-- AUTO_INCREMENT de la tabla `factura`
 --
 ALTER TABLE `factura`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `gerente`
+-- AUTO_INCREMENT de la tabla `gerente`
 --
 ALTER TABLE `gerente`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `mesa`
+-- AUTO_INCREMENT de la tabla `mesa`
 --
 ALTER TABLE `mesa`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=111;
 
 --
--- AUTO_INCREMENT for table `mesero`
+-- AUTO_INCREMENT de la tabla `mesero`
 --
 ALTER TABLE `mesero`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `pago`
+-- AUTO_INCREMENT de la tabla `pago`
 --
 ALTER TABLE `pago`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `pedido`
+-- AUTO_INCREMENT de la tabla `pedido`
 --
 ALTER TABLE `pedido`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `reservacion`
+-- AUTO_INCREMENT de la tabla `reservacion`
 --
 ALTER TABLE `reservacion`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `turno`
+-- AUTO_INCREMENT de la tabla `turno`
 --
 ALTER TABLE `turno`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- Constraints for dumped tables
+-- Restricciones para tablas volcadas
 --
 
 --
--- Constraints for table `comida`
+-- Filtros para la tabla `comida`
 --
 ALTER TABLE `comida`
   ADD CONSTRAINT `comida_ibfk_1` FOREIGN KEY (`id_categoria`) REFERENCES `categoria` (`id`);
 
 --
--- Constraints for table `comida_ingredientes`
+-- Filtros para la tabla `comida_ingredientes`
 --
 ALTER TABLE `comida_ingredientes`
   ADD CONSTRAINT `comida_ingredientes_ibfk_1` FOREIGN KEY (`id_ingrediente`) REFERENCES `ingredientes` (`id`),
   ADD CONSTRAINT `comida_ingredientes_ibfk_2` FOREIGN KEY (`id_comida`) REFERENCES `comida` (`id`);
 
 --
--- Constraints for table `comida_pedido`
+-- Filtros para la tabla `comida_pedido`
 --
 ALTER TABLE `comida_pedido`
   ADD CONSTRAINT `comida_pedido_ibfk_1` FOREIGN KEY (`id_comida`) REFERENCES `comida` (`id`),
   ADD CONSTRAINT `comida_pedido_ibfk_2` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id`);
 
 --
--- Constraints for table `factura`
+-- Filtros para la tabla `factura`
 --
 ALTER TABLE `factura`
   ADD CONSTRAINT `factura_ibfk_1` FOREIGN KEY (`id_pago`) REFERENCES `pago` (`id`);
 
 --
--- Constraints for table `mesa`
+-- Filtros para la tabla `mesa_reservacion`
 --
-ALTER TABLE `mesa`
-  ADD CONSTRAINT `mesa_ibfk_1` FOREIGN KEY (`id_reservacion`) REFERENCES `reservacion` (`id`);
+ALTER TABLE `mesa_reservacion`
+  ADD CONSTRAINT `mesa_reservacion_ibfk_1` FOREIGN KEY (`id_reservacion`) REFERENCES `reservacion` (`id`),
+  ADD CONSTRAINT `mesa_reservacion_ibfk_2` FOREIGN KEY (`id_mesa`) REFERENCES `mesa` (`id`);
 
 --
--- Constraints for table `mesero`
+-- Filtros para la tabla `mesero`
 --
 ALTER TABLE `mesero`
   ADD CONSTRAINT `mesero_ibfk_1` FOREIGN KEY (`id_turno`) REFERENCES `turno` (`id`);
 
 --
--- Constraints for table `pago`
+-- Filtros para la tabla `pago`
 --
 ALTER TABLE `pago`
   ADD CONSTRAINT `pago_ibfk_1` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id`),
@@ -675,21 +701,21 @@ ALTER TABLE `pago`
   ADD CONSTRAINT `pago_ibfk_4` FOREIGN KEY (`id_auxiliar`) REFERENCES `auxiliar` (`id`);
 
 --
--- Constraints for table `pedido`
+-- Filtros para la tabla `pedido`
 --
 ALTER TABLE `pedido`
   ADD CONSTRAINT `pedido_ibfk_1` FOREIGN KEY (`id_mesero`) REFERENCES `mesero` (`id`),
   ADD CONSTRAINT `pedido_ibfk_2` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id`);
 
 --
--- Constraints for table `pedido_mesa`
+-- Filtros para la tabla `pedido_mesa`
 --
 ALTER TABLE `pedido_mesa`
   ADD CONSTRAINT `pedido_mesa_ibfk_1` FOREIGN KEY (`id_mesa`) REFERENCES `mesa` (`id`),
   ADD CONSTRAINT `pedido_mesa_ibfk_2` FOREIGN KEY (`id_pedido`) REFERENCES `pedido` (`id`);
 
 --
--- Constraints for table `reservacion`
+-- Filtros para la tabla `reservacion`
 --
 ALTER TABLE `reservacion`
   ADD CONSTRAINT `reservacion_ibfk_1` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id`);

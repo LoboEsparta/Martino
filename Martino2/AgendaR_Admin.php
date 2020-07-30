@@ -1,4 +1,11 @@
 <?php
+
+session_start();
+
+if(!isset($_SESSION['usuarioing2'])) {
+	header("Location: controlP.php");
+}
+
 //Realizamos la conexion a la bd
 include_once 'conexion4.php';
 $objeto = new Conexion();
@@ -99,7 +106,7 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
             </div>
             <br>
             <br>
-            <a href="Control.html" id="Atras">Atras</a>
+            <a href="Control.php" id="Atras">Atras</a>
         </div>
         <div class="col-md-1"></div>
     </div>

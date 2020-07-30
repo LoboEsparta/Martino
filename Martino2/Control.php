@@ -1,5 +1,11 @@
 <?php
-$variable1=($_GET['usuario']);
+
+session_start();
+
+if(!isset($_SESSION['usuarioing2'])) {
+	header("Location: controlP.php");
+}
+
 ?>
 
 
@@ -26,7 +32,7 @@ $variable1=($_GET['usuario']);
               <h1>Martino</h1>
             </div>
             <div class="menu list-group-flush">
-              <a href="Home.html" id="Top" class="list-group-item list-group-item-action"> <img src="Img/Home.png" height="20" id="none"><img src="Img/Home.png" height="26" id="grande"> <span id="Negro"><img src="Img/Home2.png" height="35"></span> <span>Home</span></a>
+              <a href="Home.php" id="Top" class="list-group-item list-group-item-action"> <img src="Img/Home.png" height="20" id="none"><img src="Img/Home.png" height="26" id="grande"> <span id="Negro"><img src="Img/Home2.png" height="35"></span> <span>Home</span></a>
               <a href="Tablero_Mesero.php" class="list-group-item list-group-item-action"> <img src="Img/Mesero.png" height="20" id="none"><img src="Img/Mesero.png" height="26" id="grande"> <span id="Negro"><img src="Img/Mesero2.png" height="35"></span><span>Tablero de Meseros</span></a>
               <a href="Tablero_Cocinero.php" class="list-group-item list-group-item-action"> <img src="Img/Chef.png" height="20" id="none"><img src="Img/Chef.png" height="26" id="grande"> <span id="Negro"><img src="Img/Chef2.png" height="35"></span><span>Tablero de Cocineros</span></a>
               <a href="ControlP.php" class="list-group-item list-group-item-action" id="linea"> <img src="Img/Control.png" height="20" id="none"><img src="Img/Control.png" height="26" id="grande"> <span id="Negro"><img src="Img/Control2.png" height="35"></span> <span>Control</span></a>
@@ -55,8 +61,8 @@ $variable1=($_GET['usuario']);
                           Perfil <img src="Img/user.png" height="15" id="Margen">
                         </button>
                         <div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-                          <a class="dropdown-item" href="Perfil.php?variable1=<?php echo $variable1 ?>">Ver Perfil <img src="Img/user - copia.png" height="15" id="User"> </a>
-                          <a class="dropdown-item" href="ControlP.php">Cerrar Sesión <img src="Img/exit.png" height="15" id="Exit"></a>
+                          <a class="dropdown-item" href="Perfil.php">Ver Perfil <img src="Img/user - copia.png" height="15" id="User"> </a>
+                          <a class="dropdown-item" href="cerrarsesion.php">Cerrar Sesión <img src="Img/exit.png" height="15" id="Exit"></a>
                         </div>
                       </div>
 

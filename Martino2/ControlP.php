@@ -1,4 +1,10 @@
+<?php
+session_start();
 
+if(!isset($_SESSION['usuarioing'])) {
+	header("Location: index.php");
+}
+?>
 
 <!DOCTYPE html>
 <html lang="es">
@@ -79,6 +85,8 @@ if(isset($_POST['boton1'])){
   }else{
   echo "No se pudo conectar";
   }  
+  
+
     //Asignamos el valor del formulario a una variable
     $clavesita=$_POST['pass'];
     //Comparamos si en la tabla gerente hay un campo en el cual la contraseña coincida con el dato ingresado
@@ -88,8 +96,12 @@ if(isset($_POST['boton1'])){
     $array=mysqli_fetch_array($consulta);
     
     if($array['contar']>0){
+
+     
+      session_start();
+      $_SESSION['usuarioing2']=$clavesita;
       //Si hay una coincidencia entoncces nos redirecciona al Control
-    header("location: Control.php?usuario=$clavesita");
+    header("location: Control.php");
     }else{
    // En caso de estar mal la contraseña se muestra un mensaje que dice "Datos incorrectos";
     echo '<p class="alert alert-danger agileits" role="alert">Datos incorrectos!';

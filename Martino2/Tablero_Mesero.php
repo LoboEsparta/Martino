@@ -1,5 +1,13 @@
 <?php
 
+session_start();
+
+if(!isset($_SESSION['usuarioing'])) {
+	header("Location: index.php");
+}
+
+
+
 //Realizamos la conexion con la bd mediante un metodo
 include_once 'conexion.php';
 $objeto = new Conexion();
@@ -14,6 +22,15 @@ $resultado->execute();
 
 //Asignamos el valor de la consulta en una variable llamada "usuarios"
 $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
+
+
+
+
+$consulta14 = "Select comida_pedido.id_comida, comida_pedido.id_pedido, comida_pedido.cantidad, comida.nombre from comida_pedido inner join comida on comida_pedido.id_comida=comida.id;" ;
+$resultado14 = $conexion->prepare($consulta14);
+$resultado14->execute();
+$usuarios14 = $resultado14->fetchAll(PDO::FETCH_ASSOC);
+
 
 ?>
 
@@ -42,7 +59,7 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
                 <h1>Martino</h1>
             </div>
             <div class="menu list-group-flush">
-                <a href="Home.html" id="Top" class="list-group-item list-group-item-action"> <img src="Img/Home.png"
+                <a href="Home.php" id="Top" class="list-group-item list-group-item-action"> <img src="Img/Home.png"
                         height="20" id="none"><img src="Img/Home.png" height="26" id="grande"> <span id="Negro"><img
                             src="Img/Home2.png" height="35"></span> <span>Home</span></a>
                 <a href="Tablero_Mesero.php" class="list-group-item list-group-item-action"> <img src="Img/Mesero.png"
@@ -76,7 +93,8 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
                     /*Utilizamos un forreach con la variable "usuarios" que asignamos anteriormente y la asignamos a una nueva 
                      variable llamada "usuario", esto sirve para generar la cantidad de cards para la cantidad de registros 
                      obtenidos en la consulta*/
-                            foreach ($usuarios as $usuario) {
+                            foreach ($usuarios as $usuario14) {
+                              
                                 ?>
                                 
                     <div class="col-md-4">
@@ -86,13 +104,13 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
                                 <div class="row">
                                     <div class="col-md-6">
                                        <button type="button" class="btn btn-primary" data-toggle="modal"
-                                            data-target="#Clave<?php echo "".$usuario['id']?>" id="Confirma">
+                                            data-target="#Clave<?php echo "".$usuario14['id']?>" id="Confirma">
                                             Confirmar </button>
                                     </div>
 
                                     <div class="col-md-6">
                                       <button type="" class="" data-toggle="modal"
-                                            data-target="#mesa<?php echo "".$usuario['id']?>"><img
+                                            data-target="#mesa<?php echo "".$usuario14['id']?>"><img
                                                 src="Img/3 point.png" height="20"></button>
                                     </div>
 
@@ -122,27 +140,39 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
 
                 <?php
 
+
                 //nuevamente utilizamos un forreach, pero esta vez para mostrar el contenido de las ordenes
-                           foreach ($usuarios as $usuario) {
+                           foreach ($usuarios as $usuario14) {
+                           
                                 ?>
 
-                <div class="modal fade" id="mesa<?php echo "".$usuario['id']?>" tabindex="-1" role="dialog"
+                <div class="modal fade" id="mesa<?php echo "".$usuario14['id']?>" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
 
                         <div class="modal-content">
 
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Orden<?php echo " ".$usuario['id']?>
+                                <h5 class="modal-title" id="exampleModalLabel">Orden<?php echo " ".$usuario14['id']?>
                                 </h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
                             </div>
                             <div class="modal-body">
+                            <?php
+                            $noc=$usuario14['id'];
+                            $consulta14 = "SELECT comida_pedido.id_comida, comida_pedido.id_pedido, comida_pedido.cantidad, comida.nombre from comida_pedido inner join comida on comida_pedido.id_comida=comida.id WHERE id_pedido='$noc'" ;
+                            $resultado14 = $conexion->prepare($consulta14);
+                            $resultado14->execute();
+                            $usuarios14 = $resultado14->fetchAll(PDO::FETCH_ASSOC);
+                            foreach ($usuarios14 as $usuario12) {
+                                ?>
                                 <!--- Mostramos el contenido de las ordenes en forma de lista -->
-                                <li><?php echo $usuario['descripcion'] ?></li>
-
+                                <li> <?php echo $usuario12['cantidad']; ?>       <?php echo $usuario12['nombre'] ?></li>
+<?php
+                            }
+?>
                               
                             </div>
                             <div class="modal-footer">
