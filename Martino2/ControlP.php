@@ -4,6 +4,12 @@ session_start();
 if(!isset($_SESSION['usuarioing'])) {
 	header("Location: index.php");
 }
+
+
+
+if(isset($_SESSION['usuarioing2'])) {
+	header("Location: Control.php");
+}
 ?>
 
 <!DOCTYPE html>

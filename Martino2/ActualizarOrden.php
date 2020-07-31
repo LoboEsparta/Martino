@@ -39,7 +39,7 @@ $conexion2 = $objeto->Conectar();
     /* La accion que se realiza cuando el pedido es validado es Actualizar el "Estado" Del pedido
     de esta forma, el pedido dejara de mostrarse el tablero de Meseros y pasara al tablero de cocineros. 
     */
-     $consultaActualizar ="UPDATE pedido SET Estado='Inactivo' WHERE id='$variable1'";
+     $consultaActualizar ="UPDATE pedido SET Estado='Confirmar' WHERE id='$variable1'";
 
 
 //Aqui realizamos la consulta para actualizar

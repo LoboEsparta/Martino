@@ -21,7 +21,7 @@ include_once 'conexion.php';
 $objeto = new Conexion();
 $conexion = $objeto->Conectar();
 //Realizamos la consulta para tomar el contenido de la tabla pedido
-$consulta = "SELECT * FROM pedido WHERE Estado='Inactivo'" ;
+$consulta = "SELECT * FROM pedido WHERE Estado='Confirmar' or Estado='En preparación'" ;
 $resultado = $conexion->prepare($consulta);
 $resultado->execute();
 
@@ -130,17 +130,15 @@ $usuarios14 = $resultado14->fetchAll(PDO::FETCH_ASSOC);
                                     <div class="row">
                                         <div class="col-md-6">
                                         <!-- Estas lineas sirven para cambiar el texto dentro del botón -->
-                                            <button type="submit" id="otroid" class="btn btn-primary" onclick='document.getElementById("otroid").innerHTML =texto;' >Confirmar</button>
+                                            <button type="submit" id="otroid" class="btn btn-primary"> <a href="Cambiar_pedido.php?variable1=<?php echo $variable1 ?>" ><?php echo $usuario['estado'] ?></a></button>
                                           
-                                            <script>
-                                            var texto="En preparación";
-                                        </script>
+                                            
                                         </div>
                                         <div class="col-md-6">
                                         <!-- Aqui pasamos la variable a la pagina Eliminar el pedido-->
-                                            <button type="submit" name="boton1" class="btn btn-primary"
+                                            <button type="submit" class="btn btn-primary"
                                                 id="Final" value=""><a
-                                                    href="Eliminar_pedido.php?variable1=<?php echo $variable1 ?>">Finalizado</a>
+                                                    href="Eliminar_pedido.php?variable1=<?php echo $variable1 ?>">Finalizado</a> </button>
 
                                         </div>
                                     </div>
