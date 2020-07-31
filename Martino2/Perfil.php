@@ -40,11 +40,20 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="CSS/Principal.css">
     <link rel="stylesheet" href="CSS/Ad-Eliminar.css">
     <link rel="stylesheet" href="css/Estilos.css">
+    <link rel="stylesheet" href="CSS/Carga.css">
     <title>Martino</title>
     <link rel="Icon" href="Img/martino.ico">
 </head>
 
 <body>
+
+<div class="contenedor_loader">
+    <div class="loader"></div>
+</div>
+
+
+
+
     <div id="content-wraper" class="d-flex">
         <div id="sidebar-container" class="border-right">
             <div class="logo">
@@ -101,7 +110,7 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
                       <input type="text" placeholder="Apellido Paterno" value="Apellido Paterno: <?php echo $usuario['apellidoP'] ?>" disabled>
                       <input type="text" placeholder="Apellido Materno" value="Apellido Materno: <?php echo $usuario['apellidoM'] ?>" disabled>
                       <input type="text" placeholder="Numero Telefonico" value="<?php echo "Numero Telefonico: ".$usuario['telefono'] ?>" disabled>
-                      <input type="text" placeholder="Contraseña Visible" value="Contraseña Visible: <?php echo $usuario['password'] ?>" disabled>
+                      <input type="text" placeholder="Contraseña" value="Contraseña: <?php echo $usuario['password'] ?>" disabled>
                       
 
                         <a href="Edit-Perfil.php?variable1=<?php echo $variable1 ?>" id="Editar">Editar</a>
@@ -144,6 +153,7 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
     <script src="JS/bootstrap.js"></script>
     <script src="JS/jquery-3.5.1.min.js"></script>
     <script src="JS/T_Mesero.js"></script>
+    <script src="JS/script.js"></script>
     <script src="JS/abrir.js"></script>
 </body>
 

@@ -16,10 +16,17 @@ if(!isset($_SESSION['usuarioing'])) {
      <link rel="stylesheet" href="CSS/Principal.css">
      <link rel="stylesheet" href="CSS/Login.css">
      <link rel="stylesheet" href="CSS/Estilos.css">
+     <link rel="stylesheet" href="CSS/Carga.css">
      <title>Martino</title>
      <link rel="Icon" href="Img/martino.ico">
 </head>
 <body>
+
+
+<div class="contenedor_loader">
+    <div class="loader"></div>
+</div>
+
 
     <div id="content-wraper" class="d-flex">
         <div id="sidebar-container" class="border-right">
@@ -126,6 +133,8 @@ if(isset($_POST['boton1'])){
     <script src="JS/bootstrap.js"></script>
     <script src="JS/jquery-3.5.1.min.js"></script>
     <script src="JS/Login.js"></script>
+    <script src="JS/script.js"></script>
     <script src="JS/abrir.js"></script>
+
 </body>
 </html>

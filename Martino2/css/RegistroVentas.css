@@ -1,11 +1,5 @@
-body{
-    background-color: #ffffff;
-    overflow: scroll;
-}
-
-#Mio{
-    padding-left:2%;
-    padding-bottom: 1%;
+#content{
+    height: 90vh;
 }
 
 th{
@@ -23,6 +17,10 @@ td{
 #alinear{
     text-align: left;
     margin-top: 4%;
+}
+
+.menu a{
+    margin-left: 0px !important;
 }
 
 a{
@@ -56,4 +54,8 @@ button:hover{
     transition: all .5s ease;
     background-color: #191919;
     outline: none !important;
+}
+
+.col-md-4 a{
+    background-color: white;
 }

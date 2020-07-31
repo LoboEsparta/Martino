@@ -18,11 +18,16 @@ if(!isset($_SESSION['usuarioing'])) {
      <link rel="stylesheet" href="CSS/Principal.css">
      <link rel="stylesheet" href="CSS/Home.css">
      <link rel="stylesheet" href="CSS/Estilos.css">
+     <link rel="stylesheet" href="CSS/Carga.css">
      <title>Bienvenido <?php echo $_SESSION['usuarioing'] ?></title>
      <link rel="Icon" href="Img/martino.ico">
 </head>
 <body>
 
+
+<div class="contenedor_loader">
+    <div class="loader"></div>
+</div>
 
   
 
@@ -55,6 +60,7 @@ if(!isset($_SESSION['usuarioing'])) {
       <div id="content" class="p-3">
     
     <div class="card border-primary mb-3">
+    <h5 class="card-header">Historia</h5>
         <div class="card-body">
           <p class="card-text">Han pasado 130 años desde que aquella bebida novedosa se sirviera por primera vez en una fuente
             de sodas en Atlanta, Georgia. Hoy en día, el tomar una Coca-Cola implica no sólo tener entre 
@@ -164,6 +170,7 @@ if(!isset($_SESSION['usuarioing'])) {
 
     <script src="JS/bootstrap.js"></script>
      <script src="JS/jquery-3.5.1.min.js"></script>
+     <script src="JS/script.js"></script>
     <script src="JS/abrir.js"></script>
 </body>
 </html>

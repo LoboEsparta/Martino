@@ -33,12 +33,20 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="CSS/Principal.css">
     <link rel="stylesheet" href="CSS/Reservacion_Admin.css">
     <link rel="stylesheet" href="CSS/Estilos.css">
+    <link rel="stylesheet" href="CSS/Carga.css">
 
     <title>Martino</title>
     <link rel="Icon" href="Img/martino.ico">
 </head>
 
 <body>
+
+<div class="contenedor_loader">
+    <div class="loader"></div>
+</div>
+
+
+
 
 <div id="content-wraper" class="d-flex">
     <div id="sidebar-container" class="border-right">
@@ -180,6 +188,7 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
         integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
     </script>
     <script src="JS/bootstrap.min.js"></script>
+    <script src="JS/script.js"></script>
     <script src="JS/abrir.js"></script>
 
 </body>

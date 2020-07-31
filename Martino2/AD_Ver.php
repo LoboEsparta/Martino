@@ -26,11 +26,19 @@ $variable5=($_GET['variable5']);
     <link rel="stylesheet" href="CSS/Principal.css">
     <link rel="stylesheet" href="CSS/Ad-Eliminar.css">
     <link rel="stylesheet" href="CSS/Estilos.css">
+    <link rel="stylesheet" href="CSS/Carga.css">
     <title>Martino</title>
     <link rel="Icon" href="Img/martino.ico">
 </head>
 
 <body>
+
+<div class="contenedor_loader">
+    <div class="loader"></div>
+</div>
+
+
+
 <div id="content-wraper" class="d-flex">
     <div id="sidebar-container" class="border-right">
         <div class="logo">
@@ -124,6 +132,7 @@ $variable5=($_GET['variable5']);
     <script src="JS/bootstrap.js"></script>
     <script src="JS/jquery-3.5.1.min.js"></script>
     <script src="JS/T_Mesero.js"></script>
+    <script src="JS/script.js"></script>
     <script src="JS/abrir.js"></script>
 </body>
 

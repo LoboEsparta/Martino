@@ -195,6 +195,7 @@ $variable11=$usuario['id'];
     </script>
     <script src="JS/bootstrap.min.js"></script>
     <script src="JS/script.js"></script>
+    <script src="JS/abrir.js"></script>
 
 </body>
 

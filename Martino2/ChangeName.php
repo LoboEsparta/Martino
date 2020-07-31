@@ -31,11 +31,20 @@ $variable2=($_GET['variable2']);
     <link rel="stylesheet" href="CSS/Menu.css">
     <link rel="stylesheet" href="CSS/Estilos.css">
     <link rel="stylesheet" href="css/NewName.css">
+    <link rel="stylesheet" href="CSS/Carga.css">
     <title>Martino</title>
     <link rel="Icon" href="Img/martino.ico">
 </head>
 
 <body>
+
+
+<div class="contenedor_loader">
+    <div class="loader"></div>
+</div>
+
+
+
 
 <div id="content-wraper" class="d-flex">
     <div id="sidebar-container" class="border-right">
@@ -133,5 +142,11 @@ header("location:Menu.php");
       </div>
     </div>
 </div>
+
+
+<script src="JS/bootstrap.js"></script>
+    <script src="JS/jquery-3.5.1.min.js"></script>
+    <script src="JS/script.js"></script>
+    <script src="JS/abrir.js"></script>
 </body>
 </html>

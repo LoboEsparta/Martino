@@ -1,7 +1,7 @@
-body{
-    background-color: #eaf0f3;
-    overflow: scroll;
+#content{
+    height: 90vh;
 }
+
 
 .col-md-8{
     text-align: center;

@@ -45,11 +45,18 @@ $usuarios14 = $resultado14->fetchAll(PDO::FETCH_ASSOC);
     <link rel="stylesheet" href="CSS/Principal.css">
     <link rel="stylesheet" href="CSS/T_Mesero.css">
     <link rel="stylesheet" href="CSS/Estilos.css">
+    <link rel="stylesheet" href="CSS/Carga.css">
     <title>Martino</title>
     <link rel="Icon" href="Img/martino.ico">
 </head>
 
 <body>
+
+
+<div class="contenedor_loader">
+    <div class="loader"></div>
+</div>
+
 
 
     <div id="content-wraper" class="d-flex">
@@ -310,6 +317,7 @@ if(isset($_POST['botonconfir'])){
     </script>
     <script src="JS/bootstrap.min.js"></script>
     <script src="JS/abrir.js"></script>
+    <script src="JS/script.js"></script>
     <script src="JS/T_Mesero.js"></script>
 </body>
 

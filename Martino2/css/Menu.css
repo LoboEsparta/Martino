@@ -3,7 +3,10 @@
     margin-left: 3% ;
     margin-top: 3%;
     text-align: center;
-    cursor: pointer;
+}
+
+.card-body a {
+    text-decoration: none !important;
 }
 
 #Agregar{
