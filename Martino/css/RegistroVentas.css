@@ -1,0 +1,67 @@
+#content{
+    height: 90vh;
+}
+
+.table{
+    margin-top: 3%;
+}
+
+
+th{
+    color: white !important;
+}
+
+td{
+    color: black !important;
+}
+
+#Black{
+    color: black !important;
+}
+
+#alinear{
+    text-align: left;
+    margin-top: 4%;
+}
+
+.menu a{
+    margin-left: 0px !important;
+}
+
+#Con{
+    position: absolute;
+    float: right;
+    border: none;
+    outline: none;
+    padding: 0px 25px 0px 25px;
+    background: white;
+    border-radius: 20px;
+    cursor: pointer;
+    z-index: 3;
+    margin-top: 4px;
+}
+
+.col-md-4{
+    text-align: center;
+}
+
+button{
+    width: 90%;
+    margin: auto;
+    margin-top: 3%;
+    padding: 9px 0px;
+    background-color: #343a40;
+    color: white;
+    transition: all .5s ease;
+    outline: none !important;
+}
+
+button:hover{
+    transition: all .5s ease;
+    background-color: #191919;
+    outline: none !important;
+}
+
+.col-md-4 a{
+    background-color: white;
+}
