@@ -24,7 +24,6 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 
-
 <!DOCTYPE html>
 <html lang="es">
 
@@ -65,10 +64,16 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
             <img src="Img/menu - copia.png" height="25" class="Menu-Bot">
           <h2>Perfil</h2>
           </nav>
-    
+      
+            
+          <a href="Perfil.php" id="Con"><img src="Img/back.png" height="33px"></a>
+       
           <!--Contenido de la pagina-->
     
           <div id="content" class="p-3">
+
+
+        
 
 
 
@@ -84,6 +89,7 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
 //Utilizamos un forreach para mostrar los datps del perfil 
            foreach ($usuarios as $usuario) {
            
+            $variable14=$usuario['id'];
         
                 ?>
 
@@ -105,7 +111,7 @@ $usuarios = $resultado->fetchAll(PDO::FETCH_ASSOC);
            }
            ?>
 
-                            <button class="btn btn-primary" name="boton1">Editar</button>
+                            <button class="btn btn-primary" name="guardar">Editar</button>
                         </form>
 
 
@@ -151,7 +157,7 @@ if (empty($_POST['renombre'])) {
    }else{
     $corr2="1";
    }
-   if (empty($_POST['reapellidom'])) {
+   if (empty($_POST['reapellidoM'])) {
     echo '<p class="alert alert-danger agileits" role="alert">Debes ingresar el Apellido Materno';
           //return false;
           $corr3="0";
@@ -178,7 +184,7 @@ if (empty($_POST['renombre'])) {
 
 if (($corr1=="1")&&($corr2=="1")&&($corr3=="1")&&($corr4=="1")&&($corr5=="1")){
 
-$consultaActualizar ="UPDATE gerente SET nombre='$titulo1', apellidoP='$categoria1', apellidoM='$categoria2', telefono='$categoria3', Password='$categoria4' WHERE id=$variable1";
+$consultaActualizar ="UPDATE gerente SET nombre='$titulo1', apellidoP='$categoria1', apellidoM='$categoria2', telefono='$categoria3', Password='$categoria4' WHERE id=$variable14";
 
 
 $resultadoA = $conexion->prepare($consultaActualizar);
